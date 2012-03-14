@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F2B56F41510DF3000BE3F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F31510DF3000BE3F48 /* UIKit.framework */; };
+		8F2B56F61510DF3000BE3F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F51510DF3000BE3F48 /* Foundation.framework */; };
+		8F2B56F81510DF3000BE3F48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F71510DF3000BE3F48 /* CoreGraphics.framework */; };
+		8F2B56FE1510DF3000BE3F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B56FC1510DF3000BE3F48 /* InfoPlist.strings */; };
+		8F2B57001510DF3000BE3F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B56FF1510DF3000BE3F48 /* main.m */; };
+		8F2B57041510DF3000BE3F48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57031510DF3000BE3F48 /* AppDelegate.m */; };
+		8F2B57071510DF3000BE3F48 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B57051510DF3000BE3F48 /* MainStoryboard.storyboard */; };
+		8F2B570A1510DF3000BE3F48 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57091510DF3000BE3F48 /* MasterViewController.m */; };
+		8F2B570D1510DF3000BE3F48 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B570C1510DF3000BE3F48 /* DetailViewController.m */; };
+		8F2B57151510DF3000BE3F48 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B57141510DF3000BE3F48 /* SenTestingKit.framework */; };
+		8F2B57161510DF3000BE3F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F31510DF3000BE3F48 /* UIKit.framework */; };
+		8F2B57171510DF3000BE3F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F51510DF3000BE3F48 /* Foundation.framework */; };
+		8F2B571F1510DF3000BE3F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */; };
+		8F2B57221510DF3000BE3F48 /* ts_cardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F2B57181510DF3000BE3F48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F2B56E61510DF3000BE3F48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F2B56EE1510DF3000BE3F48;
+			remoteInfo = "ts-cards";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8F2B56EF1510DF3000BE3F48 /* ts-cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ts-cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F2B56F31510DF3000BE3F48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8F2B56F51510DF3000BE3F48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8F2B56F71510DF3000BE3F48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8F2B56FB1510DF3000BE3F48 /* ts-cards-Info.plist */ = {isa = PBXFileReference; path = "ts-cards-Info.plist"; sourceTree = "<group>"; };
+		8F2B56FD1510DF3000BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F2B56FF1510DF3000BE3F48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8F2B57011510DF3000BE3F48 /* ts-cards-Prefix.pch */ = {isa = PBXFileReference; path = "ts-cards-Prefix.pch"; sourceTree = "<group>"; };
+		8F2B57021510DF3000BE3F48 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		8F2B57031510DF3000BE3F48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8F2B57061510DF3000BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8F2B57081510DF3000BE3F48 /* MasterViewController.h */ = {isa = PBXFileReference; path = MasterViewController.h; sourceTree = "<group>"; };
+		8F2B57091510DF3000BE3F48 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		8F2B570B1510DF3000BE3F48 /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
+		8F2B570C1510DF3000BE3F48 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		8F2B57131510DF3000BE3F48 /* ts-cardsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ts-cardsTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F2B57141510DF3000BE3F48 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		8F2B571C1510DF3000BE3F48 /* ts-cardsTests-Info.plist */ = {isa = PBXFileReference; path = "ts-cardsTests-Info.plist"; sourceTree = "<group>"; };
+		8F2B571E1510DF3000BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F2B57201510DF3000BE3F48 /* ts_cardsTests.h */ = {isa = PBXFileReference; path = ts_cardsTests.h; sourceTree = "<group>"; };
+		8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ts_cardsTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F2B56EC1510DF3000BE3F48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F2B56F41510DF3000BE3F48 /* UIKit.framework in Frameworks */,
+				8F2B56F61510DF3000BE3F48 /* Foundation.framework in Frameworks */,
+				8F2B56F81510DF3000BE3F48 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F2B570F1510DF3000BE3F48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F2B57151510DF3000BE3F48 /* SenTestingKit.framework in Frameworks */,
+				8F2B57161510DF3000BE3F48 /* UIKit.framework in Frameworks */,
+				8F2B57171510DF3000BE3F48 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F2B56E41510DF3000BE3F48 = {
+			isa = PBXGroup;
+			children = (
+				8F2B56F91510DF3000BE3F48 /* ts-cards */,
+				8F2B571A1510DF3000BE3F48 /* ts-cardsTests */,
+				8F2B56F21510DF3000BE3F48 /* Frameworks */,
+				8F2B56F01510DF3000BE3F48 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F2B56F01510DF3000BE3F48 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B56EF1510DF3000BE3F48 /* ts-cards.app */,
+				8F2B57131510DF3000BE3F48 /* ts-cardsTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F2B56F21510DF3000BE3F48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B56F31510DF3000BE3F48 /* UIKit.framework */,
+				8F2B56F51510DF3000BE3F48 /* Foundation.framework */,
+				8F2B56F71510DF3000BE3F48 /* CoreGraphics.framework */,
+				8F2B57141510DF3000BE3F48 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F2B56F91510DF3000BE3F48 /* ts-cards */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B57021510DF3000BE3F48 /* AppDelegate.h */,
+				8F2B57031510DF3000BE3F48 /* AppDelegate.m */,
+				8F2B57051510DF3000BE3F48 /* MainStoryboard.storyboard */,
+				8F2B57081510DF3000BE3F48 /* MasterViewController.h */,
+				8F2B57091510DF3000BE3F48 /* MasterViewController.m */,
+				8F2B570B1510DF3000BE3F48 /* DetailViewController.h */,
+				8F2B570C1510DF3000BE3F48 /* DetailViewController.m */,
+				8F2B56FA1510DF3000BE3F48 /* Supporting Files */,
+			);
+			path = "ts-cards";
+			sourceTree = "<group>";
+		};
+		8F2B56FA1510DF3000BE3F48 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B56FB1510DF3000BE3F48 /* ts-cards-Info.plist */,
+				8F2B56FC1510DF3000BE3F48 /* InfoPlist.strings */,
+				8F2B56FF1510DF3000BE3F48 /* main.m */,
+				8F2B57011510DF3000BE3F48 /* ts-cards-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F2B571A1510DF3000BE3F48 /* ts-cardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B57201510DF3000BE3F48 /* ts_cardsTests.h */,
+				8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */,
+				8F2B571B1510DF3000BE3F48 /* Supporting Files */,
+			);
+			path = "ts-cardsTests";
+			sourceTree = "<group>";
+		};
+		8F2B571B1510DF3000BE3F48 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B571C1510DF3000BE3F48 /* ts-cardsTests-Info.plist */,
+				8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F2B56EE1510DF3000BE3F48 /* ts-cards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F2B57251510DF3000BE3F48 /* Build configuration list for PBXNativeTarget "ts-cards" */;
+			buildPhases = (
+				8F2B56EB1510DF3000BE3F48 /* Sources */,
+				8F2B56EC1510DF3000BE3F48 /* Frameworks */,
+				8F2B56ED1510DF3000BE3F48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ts-cards";
+			productName = "ts-cards";
+			productReference = 8F2B56EF1510DF3000BE3F48 /* ts-cards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8F2B57121510DF3000BE3F48 /* ts-cardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F2B57281510DF3000BE3F48 /* Build configuration list for PBXNativeTarget "ts-cardsTests" */;
+			buildPhases = (
+				8F2B570E1510DF3000BE3F48 /* Sources */,
+				8F2B570F1510DF3000BE3F48 /* Frameworks */,
+				8F2B57101510DF3000BE3F48 /* Resources */,
+				8F2B57111510DF3000BE3F48 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F2B57191510DF3000BE3F48 /* PBXTargetDependency */,
+			);
+			name = "ts-cardsTests";
+			productName = "ts-cardsTests";
+			productReference = 8F2B57131510DF3000BE3F48 /* ts-cardsTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F2B56E61510DF3000BE3F48 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 8F2B56E91510DF3000BE3F48 /* Build configuration list for PBXProject "ts-cards" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8F2B56E41510DF3000BE3F48;
+			productRefGroup = 8F2B56F01510DF3000BE3F48 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F2B56EE1510DF3000BE3F48 /* ts-cards */,
+				8F2B57121510DF3000BE3F48 /* ts-cardsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F2B56ED1510DF3000BE3F48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F2B56FE1510DF3000BE3F48 /* InfoPlist.strings in Resources */,
+				8F2B57071510DF3000BE3F48 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F2B57101510DF3000BE3F48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F2B571F1510DF3000BE3F48 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8F2B57111510DF3000BE3F48 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F2B56EB1510DF3000BE3F48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F2B57001510DF3000BE3F48 /* main.m in Sources */,
+				8F2B57041510DF3000BE3F48 /* AppDelegate.m in Sources */,
+				8F2B570A1510DF3000BE3F48 /* MasterViewController.m in Sources */,
+				8F2B570D1510DF3000BE3F48 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F2B570E1510DF3000BE3F48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F2B57221510DF3000BE3F48 /* ts_cardsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F2B57191510DF3000BE3F48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F2B56EE1510DF3000BE3F48 /* ts-cards */;
+			targetProxy = 8F2B57181510DF3000BE3F48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8F2B56FC1510DF3000BE3F48 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F2B56FD1510DF3000BE3F48 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8F2B57051510DF3000BE3F48 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F2B57061510DF3000BE3F48 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F2B571E1510DF3000BE3F48 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8F2B57231510DF3000BE3F48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8F2B57241510DF3000BE3F48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F2B57261510DF3000BE3F48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ts-cards/ts-cards-Prefix.pch";
+				INFOPLIST_FILE = "ts-cards/ts-cards-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8F2B57271510DF3000BE3F48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ts-cards/ts-cards-Prefix.pch";
+				INFOPLIST_FILE = "ts-cards/ts-cards-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8F2B57291510DF3000BE3F48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ts-cards.app/ts-cards";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ts-cards/ts-cards-Prefix.pch";
+				INFOPLIST_FILE = "ts-cardsTests/ts-cardsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8F2B572A1510DF3000BE3F48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ts-cards.app/ts-cards";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ts-cards/ts-cards-Prefix.pch";
+				INFOPLIST_FILE = "ts-cardsTests/ts-cardsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F2B56E91510DF3000BE3F48 /* Build configuration list for PBXProject "ts-cards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F2B57231510DF3000BE3F48 /* Debug */,
+				8F2B57241510DF3000BE3F48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F2B57251510DF3000BE3F48 /* Build configuration list for PBXNativeTarget "ts-cards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F2B57261510DF3000BE3F48 /* Debug */,
+				8F2B57271510DF3000BE3F48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8F2B57281510DF3000BE3F48 /* Build configuration list for PBXNativeTarget "ts-cardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F2B57291510DF3000BE3F48 /* Debug */,
+				8F2B572A1510DF3000BE3F48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F2B56E61510DF3000BE3F48 /* Project object */;
+}
