@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "TSCardDao.h"
 
 @implementation AppDelegate
 
@@ -22,6 +22,8 @@
     for (NSString *string in localizations) {
         NSLog(@"Localization: %@", string);
     }
+    //TODO
+    //http://itunes.apple.com/cn/app/angry-birds/id343200656?mt=8
     
     BOOL success;
     NSError *error;
@@ -57,10 +59,9 @@
 {
     // Override point for customization after application launch.
     
-
-    
     
     NSLog(@"initDatabase=%d", [self initDatabase]);
+
     
     return YES;
 }

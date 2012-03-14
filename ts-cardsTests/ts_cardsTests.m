@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in ts-cardsTests");
+    //STFail(@"Unit tests are not implemented yet in ts-cardsTests");
 }
 
 @end

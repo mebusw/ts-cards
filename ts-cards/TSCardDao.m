@@ -13,13 +13,17 @@
 @implementation TSCardDao
 
 -(TSCard*) parseCards:(FMResultSet*)rs {
-    return nil;
+    TSCard *card = [[TSCard alloc] init];
+    card.number = [rs stringForColumnIndex:0];
+    card.title = [rs stringForColumnIndex:1];
+    return card;
 }
 
 -(NSArray*)selectByNumber: (NSString*)number {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from cards where number='%@'", number]];
+
     while ([rs next]) {
         [result addObject:[self parseCards:rs]];
     }

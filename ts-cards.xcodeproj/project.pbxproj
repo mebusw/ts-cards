@@ -28,6 +28,7 @@
 		8F2B57501510E2D000BE3F48 /* TSCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B574F1510E2D000BE3F48 /* TSCard.m */; };
 		8F2B57551510E31600BE3F48 /* TSCardDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57541510E31600BE3F48 /* TSCardDao.m */; };
 		8F2B57581510E70D00BE3F48 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57571510E70D00BE3F48 /* BaseDao.m */; };
+		8F2B57641510F0FE00BE3F48 /* TSCardDaoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		8F2B575C1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/ts.sqlite"; sourceTree = "<absolute>"; };
 		8F2B575D1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
 		8F2B575E1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		8F2B57621510F0FE00BE3F48 /* TSCardDaoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCardDaoTest.h; sourceTree = "<group>"; };
+		8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDaoTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,8 @@
 				8F2B57201510DF3000BE3F48 /* ts_cardsTests.h */,
 				8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */,
 				8F2B571B1510DF3000BE3F48 /* Supporting Files */,
+				8F2B57621510F0FE00BE3F48 /* TSCardDaoTest.h */,
+				8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */,
 			);
 			path = "ts-cardsTests";
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F2B57221510DF3000BE3F48 /* ts_cardsTests.m in Sources */,
+				8F2B57641510F0FE00BE3F48 /* TSCardDaoTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

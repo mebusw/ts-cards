@@ -10,4 +10,7 @@
 #import "BaseDao.h"
 @interface TSCardDao : BaseDao
 
+
+-(NSArray*)selectByNumber: (NSString*)number;
+
 @end
