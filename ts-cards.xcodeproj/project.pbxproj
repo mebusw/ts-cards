@@ -21,6 +21,11 @@
 		8F2B57171510DF3000BE3F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F51510DF3000BE3F48 /* Foundation.framework */; };
 		8F2B571F1510DF3000BE3F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */; };
 		8F2B57221510DF3000BE3F48 /* ts_cardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */; };
+		8F2B573D1510E05500BE3F48 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57321510E00A00BE3F48 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8F2B573E1510E05900BE3F48 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57341510E00A00BE3F48 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8F2B573F1510E06700BE3F48 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57331510E00A00BE3F48 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8F2B57411510E0AF00BE3F48 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */; };
+		8F2B574A1510E1D300BE3F48 /* ts.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B57481510E1D300BE3F48 /* ts.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,14 @@
 		8F2B572B1510DF8A00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		8F2B572C1510DF8A00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
 		8F2B572D1510DF8A00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cardsTests/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		8F2B57321510E00A00BE3F48 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		8F2B57331510E00A00BE3F48 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		8F2B57341510E00A00BE3F48 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		8F2B57351510E00A00BE3F48 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		8F2B57361510E00A00BE3F48 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		8F2B57371510E00A00BE3F48 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		8F2B57491510E1D300BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/ts.sqlite"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +78,7 @@
 				8F2B56F41510DF3000BE3F48 /* UIKit.framework in Frameworks */,
 				8F2B56F61510DF3000BE3F48 /* Foundation.framework in Frameworks */,
 				8F2B56F81510DF3000BE3F48 /* CoreGraphics.framework in Frameworks */,
+				8F2B57411510E0AF00BE3F48 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +117,7 @@
 		8F2B56F21510DF3000BE3F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */,
 				8F2B56F31510DF3000BE3F48 /* UIKit.framework */,
 				8F2B56F51510DF3000BE3F48 /* Foundation.framework */,
 				8F2B56F71510DF3000BE3F48 /* CoreGraphics.framework */,
@@ -114,6 +129,8 @@
 		8F2B56F91510DF3000BE3F48 /* ts-cards */ = {
 			isa = PBXGroup;
 			children = (
+				8F2B57481510E1D300BE3F48 /* ts.sqlite */,
+				8F2B573B1510E01200BE3F48 /* FMDB */,
 				8F2B57021510DF3000BE3F48 /* AppDelegate.h */,
 				8F2B57031510DF3000BE3F48 /* AppDelegate.m */,
 				8F2B57051510DF3000BE3F48 /* MainStoryboard.storyboard */,
@@ -154,6 +171,19 @@
 				8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F2B573B1510E01200BE3F48 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B57321510E00A00BE3F48 /* FMDatabaseAdditions.m */,
+				8F2B57331510E00A00BE3F48 /* FMDatabase.m */,
+				8F2B57341510E00A00BE3F48 /* FMResultSet.m */,
+				8F2B57351510E00A00BE3F48 /* FMDatabaseAdditions.h */,
+				8F2B57361510E00A00BE3F48 /* FMDatabase.h */,
+				8F2B57371510E00A00BE3F48 /* FMResultSet.h */,
+			);
+			name = FMDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +239,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 8F2B56E41510DF3000BE3F48;
 			productRefGroup = 8F2B56F01510DF3000BE3F48 /* Products */;
@@ -228,6 +259,7 @@
 			files = (
 				8F2B56FE1510DF3000BE3F48 /* InfoPlist.strings in Resources */,
 				8F2B57071510DF3000BE3F48 /* MainStoryboard.storyboard in Resources */,
+				8F2B574A1510E1D300BE3F48 /* ts.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +298,9 @@
 				8F2B57041510DF3000BE3F48 /* AppDelegate.m in Sources */,
 				8F2B570A1510DF3000BE3F48 /* MasterViewController.m in Sources */,
 				8F2B570D1510DF3000BE3F48 /* DetailViewController.m in Sources */,
+				8F2B573D1510E05500BE3F48 /* FMDatabaseAdditions.m in Sources */,
+				8F2B573E1510E05900BE3F48 /* FMResultSet.m in Sources */,
+				8F2B573F1510E06700BE3F48 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +345,14 @@
 				8F2B572D1510DF8A00BE3F48 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8F2B57481510E1D300BE3F48 /* ts.sqlite */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F2B57491510E1D300BE3F48 /* zh-Hans */,
+			);
+			name = ts.sqlite;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
