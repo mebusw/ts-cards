@@ -12,3 +12,14 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+#ifdef DEBUG
+#   define NSLog(fmt, ...) NSLog((@"%s<Ln%d> " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define NSLog(...)
+#endif
+
+#define STR(format...)     ([NSString stringWithFormat:format])
+
+#define STAssertEqualStr(expect, actual, msg, ...) STAssertTrue([expect isEqualToString:actual], @"expect=<%@>, but actual=<%@>. " msg, expect, actual, ##__VA_ARGS__);

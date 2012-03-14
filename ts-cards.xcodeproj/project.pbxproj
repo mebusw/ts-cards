@@ -19,13 +19,15 @@
 		8F2B57151510DF3000BE3F48 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B57141510DF3000BE3F48 /* SenTestingKit.framework */; };
 		8F2B57161510DF3000BE3F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F31510DF3000BE3F48 /* UIKit.framework */; };
 		8F2B57171510DF3000BE3F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F51510DF3000BE3F48 /* Foundation.framework */; };
-		8F2B571F1510DF3000BE3F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */; };
 		8F2B57221510DF3000BE3F48 /* ts_cardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */; };
 		8F2B573D1510E05500BE3F48 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57321510E00A00BE3F48 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8F2B573E1510E05900BE3F48 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57341510E00A00BE3F48 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8F2B573F1510E06700BE3F48 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57331510E00A00BE3F48 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8F2B57411510E0AF00BE3F48 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */; };
 		8F2B574A1510E1D300BE3F48 /* ts.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B57481510E1D300BE3F48 /* ts.sqlite */; };
+		8F2B57501510E2D000BE3F48 /* TSCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B574F1510E2D000BE3F48 /* TSCard.m */; };
+		8F2B57551510E31600BE3F48 /* TSCardDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57541510E31600BE3F48 /* TSCardDao.m */; };
+		8F2B57581510E70D00BE3F48 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57571510E70D00BE3F48 /* BaseDao.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,9 +59,6 @@
 		8F2B571C1510DF3000BE3F48 /* ts-cardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ts-cardsTests-Info.plist"; sourceTree = "<group>"; };
 		8F2B57201510DF3000BE3F48 /* ts_cardsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ts_cardsTests.h; sourceTree = "<group>"; };
 		8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ts_cardsTests.m; sourceTree = "<group>"; };
-		8F2B572B1510DF8A00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
-		8F2B572C1510DF8A00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
-		8F2B572D1510DF8A00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cardsTests/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		8F2B57321510E00A00BE3F48 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		8F2B57331510E00A00BE3F48 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		8F2B57341510E00A00BE3F48 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
@@ -67,7 +66,18 @@
 		8F2B57361510E00A00BE3F48 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		8F2B57371510E00A00BE3F48 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
-		8F2B57491510E1D300BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/ts.sqlite"; sourceTree = "<group>"; };
+		8F2B574E1510E2D000BE3F48 /* TSCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCard.h; sourceTree = "<group>"; };
+		8F2B574F1510E2D000BE3F48 /* TSCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCard.m; sourceTree = "<group>"; };
+		8F2B57531510E31600BE3F48 /* TSCardDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCardDao.h; sourceTree = "<group>"; };
+		8F2B57541510E31600BE3F48 /* TSCardDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDao.m; sourceTree = "<group>"; };
+		8F2B57561510E70D00BE3F48 /* BaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDao.h; sourceTree = "<group>"; };
+		8F2B57571510E70D00BE3F48 /* BaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDao.m; sourceTree = "<group>"; };
+		8F2B57591510EAF800BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F2B575A1510EB0100BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/ts.sqlite; sourceTree = "<group>"; };
+		8F2B575B1510EB0A00BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8F2B575C1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/ts.sqlite"; sourceTree = "<absolute>"; };
+		8F2B575D1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
+		8F2B575E1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +139,8 @@
 		8F2B56F91510DF3000BE3F48 /* ts-cards */ = {
 			isa = PBXGroup;
 			children = (
+				8F2B57521510E30100BE3F48 /* DAO */,
+				8F2B57511510E2D500BE3F48 /* PO */,
 				8F2B57481510E1D300BE3F48 /* ts.sqlite */,
 				8F2B573B1510E01200BE3F48 /* FMDB */,
 				8F2B57021510DF3000BE3F48 /* AppDelegate.h */,
@@ -168,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				8F2B571C1510DF3000BE3F48 /* ts-cardsTests-Info.plist */,
-				8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -184,6 +195,26 @@
 				8F2B57371510E00A00BE3F48 /* FMResultSet.h */,
 			);
 			name = FMDB;
+			sourceTree = "<group>";
+		};
+		8F2B57511510E2D500BE3F48 /* PO */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B574E1510E2D000BE3F48 /* TSCard.h */,
+				8F2B574F1510E2D000BE3F48 /* TSCard.m */,
+			);
+			name = PO;
+			sourceTree = "<group>";
+		};
+		8F2B57521510E30100BE3F48 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				8F2B57561510E70D00BE3F48 /* BaseDao.h */,
+				8F2B57571510E70D00BE3F48 /* BaseDao.m */,
+				8F2B57531510E31600BE3F48 /* TSCardDao.h */,
+				8F2B57541510E31600BE3F48 /* TSCardDao.m */,
+			);
+			name = DAO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +298,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2B571F1510DF3000BE3F48 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +331,9 @@
 				8F2B573D1510E05500BE3F48 /* FMDatabaseAdditions.m in Sources */,
 				8F2B573E1510E05900BE3F48 /* FMResultSet.m in Sources */,
 				8F2B573F1510E06700BE3F48 /* FMDatabase.m in Sources */,
+				8F2B57501510E2D000BE3F48 /* TSCard.m in Sources */,
+				8F2B57551510E31600BE3F48 /* TSCardDao.m in Sources */,
+				8F2B57581510E70D00BE3F48 /* BaseDao.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +359,8 @@
 		8F2B56FC1510DF3000BE3F48 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8F2B572B1510DF8A00BE3F48 /* zh-Hans */,
+				8F2B57591510EAF800BE3F48 /* en */,
+				8F2B575E1510EBEA00BE3F48 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -334,23 +368,17 @@
 		8F2B57051510DF3000BE3F48 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8F2B572C1510DF8A00BE3F48 /* zh-Hans */,
+				8F2B575B1510EB0A00BE3F48 /* en */,
+				8F2B575D1510EBEA00BE3F48 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		8F2B571D1510DF3000BE3F48 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8F2B572D1510DF8A00BE3F48 /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		8F2B57481510E1D300BE3F48 /* ts.sqlite */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8F2B57491510E1D300BE3F48 /* zh-Hans */,
+				8F2B575A1510EB0100BE3F48 /* en */,
+				8F2B575C1510EBEA00BE3F48 /* zh-Hans */,
 			);
 			name = ts.sqlite;
 			sourceTree = "<group>";
@@ -378,7 +406,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -396,7 +424,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
