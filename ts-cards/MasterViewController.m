@@ -34,7 +34,6 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
 
-    _objects = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
@@ -48,22 +47,25 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (void)insertNewObject:(id)sender
-{
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-}
-
 -(void) insertNewCard:(int)number {
     TSCardDao *dao = [[TSCardDao alloc] init];
     TSCard *card = (TSCard*)[[dao selectByNumber:number] objectAtIndex:0];
+    
+    if (!_objects) {
+        _objects = [[NSMutableArray alloc] init];
+    }
+    
     [_objects insertObject:card atIndex:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
+- (void)insertNewObject:(id)sender
+{
+    [self insertNewCard:99];
+}
+
+
 
 #pragma mark - Table View
 

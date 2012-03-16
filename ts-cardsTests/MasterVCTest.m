@@ -9,6 +9,7 @@
 #import "MasterVCTest.h"
 #import "OCMock/OCMock.h"
 #import "MasterViewController.h"
+#import "DetailViewController.h"
 #import "TSCard.h"
 #import "TSCardDao.h"
 
@@ -42,8 +43,6 @@
 
 - (void)test_cellForRowAtIndexPath {
     MasterViewController *controller = [[MasterViewController alloc] init];
-
-    
     NSIndexPath *dummyIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
     id tableViewMock = [OCMockObject mockForClass:[UITableView class]];
     [[tableViewMock expect] dequeueReusableCellWithIdentifier:@"Cell"];
@@ -53,17 +52,39 @@
     [tableViewMock verify];
 }
 
-- (void) test_insertNewObject {
+- (void) test_insertNewCard {
     MasterViewController *controller = [[MasterViewController alloc] init];
     int number = 30;
+    id tableViewMock = [OCMockObject partialMockForObject:controller.tableView];
+    [[tableViewMock expect] insertRowsAtIndexPaths:[OCMArg any] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    [controller viewDidLoad];
     [controller insertNewCard:number];
 
-    
+    [tableViewMock verify];
     TSCard *card = [controller._objects objectAtIndex:0];
     STAssertEquals(1u, [controller._objects count], @"");
     STAssertEquals(number, card.number, @"");
+}
+
+- (void) test_prepareForSegue {
+    MasterViewController *controller = [[MasterViewController alloc] init];
+    TSCard *card = [[TSCard alloc] init];
+    controller._objects = [[NSMutableArray alloc] init];
+    [controller._objects addObject:card];
+    id segue = [OCMockObject mockForClass:[UIStoryboardSegue class]];
+    [[[segue stub] andReturn:@"showDetail"] identifier]; 
+    id destination = [OCMockObject mockForClass:[DetailViewController class]];
+    [[[segue stub] andReturn:destination] destinationViewController];
+    [[destination expect] setDetailItem:card];
+    
+    id tableViewMock = [OCMockObject partialMockForObject:controller.tableView];
+    [[[tableViewMock stub] andReturn:0] indexPathForSelectedRow];
+    
+    
+    [controller prepareForSegue:segue sender:nil];
+    
+    [destination verify];
+   
 }
 
 @end
