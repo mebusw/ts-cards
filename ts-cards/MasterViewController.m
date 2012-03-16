@@ -13,7 +13,7 @@
 #import "TSCardDao.h"
 
 @interface MasterViewController () {
-    
+
 }
 @end
 
@@ -33,7 +33,7 @@
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    
+
     _objects = [[NSMutableArray alloc] init];
 }
 

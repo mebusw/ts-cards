@@ -42,6 +42,7 @@
 
 - (void)test_cellForRowAtIndexPath {
     MasterViewController *controller = [[MasterViewController alloc] init];
+
     
     NSIndexPath *dummyIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
     id tableViewMock = [OCMockObject mockForClass:[UITableView class]];
@@ -58,6 +59,7 @@
     
     [controller viewDidLoad];
     [controller insertNewCard:number];
+
     
     TSCard *card = [controller._objects objectAtIndex:0];
     STAssertEquals(1u, [controller._objects count], @"");
