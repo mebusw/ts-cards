@@ -12,5 +12,5 @@
 
 
 -(NSArray*)selectByNumber: (int)number;
-
+-(NSArray*)selectByTitle: (NSString*)title;
 @end

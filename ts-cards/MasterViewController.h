@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *_objects;
+@property (nonatomic, strong) NSArray *_searchResults;
 
 -(void) insertNewCard:(int)number;
 

@@ -21,7 +21,7 @@
 @end
 
 @implementation MasterViewController
-@synthesize _objects;
+@synthesize _objects, _searchResults;
 
 - (void)awakeFromNib
 {
@@ -106,17 +106,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    if (tableView == self.tableView) {
+        return _objects.count;
+    } else if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [_searchResults count];
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell"];
+    }
     
+    TSCard *card;
+    if (tableView == self.tableView) {
+        card = [_objects objectAtIndex:indexPath.row];
+    } else if (tableView == self.searchDisplayController.searchResultsTableView) {
+        card = [_searchResults objectAtIndex:indexPath.row];
+    }
     
-    TSCard *card = (TSCard*)[_objects objectAtIndex:indexPath.row];
     cell.textLabel.text = card.title;
     cell.detailTextLabel.text = STR(@"#%d", card.number);
+
     return cell;
 }
 
@@ -134,6 +148,18 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        TSCard *card = [_searchResults objectAtIndex:[indexPath row]];
+        
+        [self insertNewCard:card.number];
+
+        [self.searchDisplayController setActive:NO animated:YES];
+    }
+    
+
 }
 
 /*
@@ -156,13 +182,22 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = [_objects objectAtIndex:indexPath.row];
+        TSCard *object = [_objects objectAtIndex:indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
 
 #pragma mark - search view controller
 
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    TSCardDao *dao = [[TSCardDao alloc] init];
+    if (![searchString isEqualToString:@""]) {
+        _searchResults = [dao selectByTitle:searchString];
+        NSLog(@"%@", _searchResults);
+        return YES;
+    }
+    return NO;
+}
 
 
 @end
