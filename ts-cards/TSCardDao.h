@@ -11,6 +11,6 @@
 @interface TSCardDao : BaseDao
 
 
--(NSArray*)selectByNumber: (NSString*)number;
+-(NSArray*)selectByNumber: (int)number;
 
 @end
