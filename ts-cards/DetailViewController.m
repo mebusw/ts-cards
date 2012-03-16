@@ -16,8 +16,8 @@
 @implementation DetailViewController
 
 @synthesize detailItem = _detailItem;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
-@synthesize lblTitle, lblNumber;
+
+@synthesize lblTitle, lblNumber, lblEvent;
 
 #pragma mark - Managing the detail item
 
@@ -36,10 +36,11 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+
         TSCard *card = (TSCard*)(self.detailItem);
         self.lblTitle.text = card.title;
         self.lblNumber.text = STR(@"%d", card.number);
+        self.lblEvent.text = card.event;
     }
 }
 
@@ -54,7 +55,8 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    self.detailDescriptionLabel = nil;
+    NSLog(@"");
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

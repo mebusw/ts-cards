@@ -12,9 +12,12 @@
 #import "TSCard.h"
 #import "TSCardDao.h"
 
+#define btnCancel   0
+#define btnOK   1
 @interface MasterViewController () {
-
+    UITextField *numberField;
 }
+- (void) addButtonTapped:(id)sender;
 @end
 
 @implementation MasterViewController
@@ -31,7 +34,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
     self.navigationItem.rightBarButtonItem = addButton;
 
 }
@@ -42,10 +45,41 @@
     // Release any retained subviews of the main view.
 }
 
+- (void)didReceiveMemoryWarning {
+    [_objects removeAllObjects];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
+- (void) addButtonTapped:(id)sender {
+    UIAlertView* dialog = [[UIAlertView alloc] init];
+    [dialog setDelegate:self];
+    //TODO i18n
+    [dialog setTitle:@"Enter Name"];
+    [dialog setMessage:@" "];
+    [dialog addButtonWithTitle:@"Cancel"];
+    [dialog addButtonWithTitle:@"OK"];
+    
+    numberField = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 45.0, 245.0, 25.0)];
+    [numberField setBackgroundColor:[UIColor whiteColor]];
+    numberField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    [dialog addSubview:numberField];
+    CGAffineTransform moveUp = CGAffineTransformMakeTranslation(0.0, -50.0);
+    [dialog setTransform: moveUp];
+    [dialog show];
+    [numberField becomeFirstResponder];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (btnOK == buttonIndex) {
+        [self insertNewCard:[numberField.text intValue]];
+    }
+}
+
 
 -(void) insertNewCard:(int)number {
     TSCardDao *dao = [[TSCardDao alloc] init];
@@ -60,10 +94,6 @@
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)insertNewObject:(id)sender
-{
-    [self insertNewCard:99];
-}
 
 
 
@@ -83,8 +113,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    NSDate *object = [_objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object description];
+    
+    TSCard *card = (TSCard*)[_objects objectAtIndex:indexPath.row];
+    cell.textLabel.text = card.title;
+    cell.detailTextLabel.text = STR(@"#%d", card.number);
     return cell;
 }
 

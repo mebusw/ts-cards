@@ -12,9 +12,9 @@
 
 @property (strong, nonatomic) id detailItem;
 
-@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
 @property (strong, nonatomic) IBOutlet UILabel *lblTitle;
 @property (strong, nonatomic) IBOutlet UILabel *lblNumber;
-
+@property (strong, nonatomic) IBOutlet UILabel *lblEvent;
 
 @end

@@ -26,16 +26,8 @@
     [super tearDown];
 }
 
-- (void)test_configureView {
-    DetailViewController *controller = [[DetailViewController alloc] init];
-    
-//    NSIndexPath *dummyIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
-//    id tableViewMock = [OCMockObject mockForClass:[UITableView class]];
-//    [[tableViewMock expect] dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    [controller viewDidLoad];
-    
-//    [tableViewMock verify];
-    STAssertNil(controller.detailItem, @"");
+- (void)test {   
+
+
 }
 @end
