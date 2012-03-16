@@ -31,6 +31,7 @@
 		8F2B57641510F0FE00BE3F48 /* TSCardDaoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */; };
 		8F80FBA31512F3CE00CCFB98 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F80FBA21512F3CE00CCFB98 /* libOCMock.a */; };
 		8F80FBA515131C4300CCFB98 /* ICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F80FBA415131C4300CCFB98 /* ICON@2x.png */; };
+		8F80FBC41513392600CCFB98 /* MasterVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC31513392600CCFB98 /* MasterVCTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDaoTest.m; sourceTree = "<group>"; };
 		8F80FBA21512F3CE00CCFB98 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		8F80FBA415131C4300CCFB98 /* ICON@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ICON@2x.png"; sourceTree = "<group>"; };
+		8F80FBC21513392600CCFB98 /* MasterVCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterVCTest.h; sourceTree = "<group>"; };
+		8F80FBC31513392600CCFB98 /* MasterVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterVCTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				8F2B57211510DF3000BE3F48 /* ts_cardsTests.m */,
 				8F2B57621510F0FE00BE3F48 /* TSCardDaoTest.h */,
 				8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */,
+				8F80FBC21513392600CCFB98 /* MasterVCTest.h */,
+				8F80FBC31513392600CCFB98 /* MasterVCTest.m */,
 			);
 			path = "ts-cardsTests";
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			files = (
 				8F2B57221510DF3000BE3F48 /* ts_cardsTests.m in Sources */,
 				8F2B57641510F0FE00BE3F48 /* TSCardDaoTest.m in Sources */,
+				8F80FBC41513392600CCFB98 /* MasterVCTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +426,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -438,7 +444,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

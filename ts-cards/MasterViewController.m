@@ -9,14 +9,16 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "TSCard.h"
+#import "TSCardDao.h"
 
 @interface MasterViewController () {
-    NSMutableArray *_objects;
+    
 }
 @end
 
 @implementation MasterViewController
-
+@synthesize _objects;
 
 - (void)awakeFromNib
 {
@@ -28,9 +30,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    _objects = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
@@ -52,6 +56,13 @@
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+}
+
+-(void) insertNewCard:(int)number {
+    TSCardDao *dao = [[TSCardDao alloc] init];
+    TSCard *card = (TSCard*)[[dao selectByNumber:number] objectAtIndex:0];
+    [_objects insertObject:card atIndex:0];
 }
 
 #pragma mark - Table View
@@ -69,7 +80,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-
+    
     NSDate *object = [_objects objectAtIndex:indexPath.row];
     cell.textLabel.text = [object description];
     return cell;
@@ -92,20 +103,20 @@
 }
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -115,5 +126,9 @@
         [[segue destinationViewController] setDetailItem:object];
     }
 }
+
+#pragma mark - search view controller
+
+
 
 @end
