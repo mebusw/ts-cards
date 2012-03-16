@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController {
+    
+}
+
+@property (nonatomic, strong) NSMutableArray *_objects;
+
+-(void) insertNewCard:(int)number;
 
 @end

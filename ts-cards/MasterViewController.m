@@ -9,14 +9,16 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "TSCard.h"
+#import "TSCardDao.h"
 
 @interface MasterViewController () {
-    NSMutableArray *_objects;
+
 }
 @end
 
 @implementation MasterViewController
-
+@synthesize _objects;
 
 - (void)awakeFromNib
 {
@@ -31,6 +33,8 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+
+    _objects = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
@@ -52,6 +56,13 @@
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+}
+
+-(void) insertNewCard:(int)number {
+    TSCardDao *dao = [[TSCardDao alloc] init];
+    TSCard *card = (TSCard*)[[dao selectByNumber:number] objectAtIndex:0];
+    [_objects insertObject:card atIndex:0];
 }
 
 #pragma mark - Table View
@@ -115,5 +126,9 @@
         [[segue destinationViewController] setDetailItem:object];
     }
 }
+
+#pragma mark - search view controller
+
+
 
 @end
