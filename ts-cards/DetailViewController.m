@@ -17,7 +17,7 @@
 
 @synthesize detailItem = _detailItem;
 
-@synthesize lblTitle, lblNumber, lblEvent;
+@synthesize lblTitle, lblNumber, lblEvent, lblOps, lblSide, lblPeriod;
 
 #pragma mark - Managing the detail item
 
@@ -39,8 +39,11 @@
 
         TSCard *card = (TSCard*)(self.detailItem);
         self.lblTitle.text = card.title;
-        self.lblNumber.text = STR(@"%d", card.number);
+        self.lblNumber.text = card.number;
         self.lblEvent.text = card.event;
+        self.lblOps.text = card.ops;
+        self.lblSide.text = card.side;
+        self.lblPeriod.text = card.period;
     }
 }
 

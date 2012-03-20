@@ -122,6 +122,27 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ops" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="wCH-H6-nnB">
+                                <rect key="frame" x="0.0" y="7" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="rzw-Te-bjO">
+                                <rect key="frame" x="0.0" y="32" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="period" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="5Gh-0W-ehg">
+                                <rect key="frame" x="238" y="344" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -129,6 +150,9 @@
                     <connections>
                         <outlet property="lblEvent" destination="Etx-Z3-8gm" id="xCy-5t-gur"/>
                         <outlet property="lblNumber" destination="Yz2-fK-CZE" id="9i3-0K-k71"/>
+                        <outlet property="lblOps" destination="wCH-H6-nnB" id="B3k-j0-jnl"/>
+                        <outlet property="lblPeriod" destination="5Gh-0W-ehg" id="9IF-hk-vKG"/>
+                        <outlet property="lblSide" destination="rzw-Te-bjO" id="DUm-di-2gW"/>
                         <outlet property="lblTitle" destination="Exz-I2-UYR" id="u44-8P-7g7"/>
                     </connections>
                 </viewController>
@@ -142,6 +166,9 @@
             <relationships>
                 <relationship kind="outlet" name="lblEvent" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblNumber" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblOps" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPeriod" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblSide" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblTitle" candidateClass="UILabel"/>
             </relationships>
         </class>

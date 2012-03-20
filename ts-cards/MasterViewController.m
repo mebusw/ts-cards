@@ -129,7 +129,7 @@
     }
     
     cell.textLabel.text = card.title;
-    cell.detailTextLabel.text = STR(@"#%d", card.number);
+    cell.detailTextLabel.text = card.number;
 
     return cell;
 }

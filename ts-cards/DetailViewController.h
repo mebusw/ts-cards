@@ -16,5 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblTitle;
 @property (strong, nonatomic) IBOutlet UILabel *lblNumber;
 @property (strong, nonatomic) IBOutlet UILabel *lblEvent;
+@property (strong, nonatomic) IBOutlet UILabel *lblOps;
+@property (strong, nonatomic) IBOutlet UILabel *lblSide;
+@property (strong, nonatomic) IBOutlet UILabel *lblPeriod;
 
 @end
