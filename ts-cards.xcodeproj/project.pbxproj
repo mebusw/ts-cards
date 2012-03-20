@@ -29,6 +29,7 @@
 		8F2B57551510E31600BE3F48 /* TSCardDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57541510E31600BE3F48 /* TSCardDao.m */; };
 		8F2B57581510E70D00BE3F48 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57571510E70D00BE3F48 /* BaseDao.m */; };
 		8F2B57641510F0FE00BE3F48 /* TSCardDaoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */; };
+		8F3141421518E33C000EB574 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3141411518E33C000EB574 /* iAd.framework */; };
 		8F80FBA31512F3CE00CCFB98 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F80FBA21512F3CE00CCFB98 /* libOCMock.a */; };
 		8F80FBA515131C4300CCFB98 /* ICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F80FBA415131C4300CCFB98 /* ICON@2x.png */; };
 		8F80FBC41513392600CCFB98 /* MasterVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC31513392600CCFB98 /* MasterVCTest.m */; };
@@ -85,6 +86,7 @@
 		8F2B575E1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		8F2B57621510F0FE00BE3F48 /* TSCardDaoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCardDaoTest.h; sourceTree = "<group>"; };
 		8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDaoTest.m; sourceTree = "<group>"; };
+		8F3141411518E33C000EB574 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8F80FBA21512F3CE00CCFB98 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		8F80FBA415131C4300CCFB98 /* ICON@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ICON@2x.png"; sourceTree = "<group>"; };
 		8F80FBC21513392600CCFB98 /* MasterVCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterVCTest.h; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3141421518E33C000EB574 /* iAd.framework in Frameworks */,
 				8F2B56F41510DF3000BE3F48 /* UIKit.framework in Frameworks */,
 				8F2B56F61510DF3000BE3F48 /* Foundation.framework in Frameworks */,
 				8F2B56F81510DF3000BE3F48 /* CoreGraphics.framework in Frameworks */,
@@ -142,6 +145,7 @@
 		8F2B56F21510DF3000BE3F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F3141411518E33C000EB574 /* iAd.framework */,
 				8F80FBA21512F3CE00CCFB98 /* libOCMock.a */,
 				8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */,
 				8F2B56F31510DF3000BE3F48 /* UIKit.framework */,

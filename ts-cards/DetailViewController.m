@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "TSCard.h"
+#import <iAd/iAd.h>
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -18,6 +19,9 @@
 @synthesize detailItem = _detailItem;
 
 @synthesize lblTitle, lblNumber, lblEvent, lblOps, lblSide, lblPeriod;
+
+ADBannerView *adView;
+
 
 #pragma mark - Managing the detail item
 
@@ -47,11 +51,20 @@
     }
 }
 
+-(void) addAdView {
+    adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+    adView.delegate = (id)self;
+    CGSize size = self.view.frame.size;
+    adView.center = CGPointMake(size.width / 2, size.height);
+    [self.view addSubview:adView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    [self addAdView];
 }
 
 - (void)viewDidUnload
@@ -66,5 +79,47 @@
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
+#pragma mark - AD Delegate Function
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+	NSLog(@"ad: bannerViewActionShouldBegin");
+    
+	return YES;
+}
+
+-(void) bannerViewActionDidFinish:(ADBannerView *)banner
+{
+	NSLog(@"ad: bannerViewActionDidFinish");
+    
+}
+
+-(void) bannerViewDidLoadAd:(ADBannerView *)banner
+{
+	NSLog(@"ad: bannerViewDidLoadAd");
+	
+    [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+    // banner is invisible now and moved out of the screen on 50 px
+    [UIView setAnimationDuration:1.0];
+    CGSize size = self.view.frame.size;
+    adView.center = CGPointMake(size.width / 2, size.height - 25);
+    adView.hidden = NO;
+    [UIView commitAnimations];
+    
+	
+}
+
+-(void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+	NSLog(@"ad: bannerView error:%@", error);
+	
+    [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+    // banner is visible and we move it out of the screen, due to connection issue
+    adView.hidden = YES;
+    [UIView commitAnimations];
+    
+}
+
 
 @end
