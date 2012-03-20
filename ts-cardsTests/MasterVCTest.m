@@ -54,16 +54,16 @@
 
 - (void) test_insertNewCard {
     MasterViewController *controller = [[MasterViewController alloc] init];
-    int number = 30;
+    NSString *number = @"30";
     id tableViewMock = [OCMockObject partialMockForObject:controller.tableView];
     [[tableViewMock expect] insertRowsAtIndexPaths:[OCMArg any] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    [controller insertNewCard:number];
+    [controller insertNewCard:[number intValue]];
 
     [tableViewMock verify];
     TSCard *card = [controller._objects objectAtIndex:0];
     STAssertEquals(1u, [controller._objects count], @"");
-    STAssertEquals(number, card.number, @"");
+    STAssertEqualStr(number, card.number, @"");
 }
 
 - (void) test_prepareForSegue {

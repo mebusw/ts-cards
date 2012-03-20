@@ -460,11 +460,13 @@
 		8F2B57261510DF3000BE3F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Shen (45X47L28FR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ts-cards/ts-cards-Prefix.pch";
 				INFOPLIST_FILE = "ts-cards/ts-cards-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B58E8E8B-A77D-484D-B886-47BD56B05745";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -472,11 +474,13 @@
 		8F2B57271510DF3000BE3F48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Shen (45X47L28FR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ts-cards/ts-cards-Prefix.pch";
 				INFOPLIST_FILE = "ts-cards/ts-cards-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B58E8E8B-A77D-484D-B886-47BD56B05745";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

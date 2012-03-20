@@ -154,7 +154,7 @@
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         TSCard *card = [_searchResults objectAtIndex:[indexPath row]];
         
-        [self insertNewCard:card.number];
+        [self insertNewCard:[card.number intValue]];
 
         [self.searchDisplayController setActive:NO animated:YES];
     }

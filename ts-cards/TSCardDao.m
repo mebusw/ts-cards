@@ -14,9 +14,9 @@
 
 -(TSCard*) parseCards:(FMResultSet*)rs {
     TSCard *card = [[TSCard alloc] init];
-    card.number = [rs intForColumnIndex:0];
+    card.number = [rs stringForColumnIndex:0];
     card.title = [rs stringForColumnIndex:1];
-    card.ops = [rs intForColumnIndex:2];
+    card.ops = [rs stringForColumnIndex:2];
     card.side = [rs stringForColumnIndex:3];
     card.period = [rs stringForColumnIndex:4];
     card.event = [rs stringForColumnIndex:5];
@@ -27,10 +27,9 @@
     card.central_america = [rs stringForColumnIndex:10];
     card.africa = [rs stringForColumnIndex:11];
     card.se_asia = [rs stringForColumnIndex:12];
-    card.vp = [rs intForColumnIndex:13];
+    card.vp = [rs stringForColumnIndex:13];
     card.not_defcon2 = [rs stringForColumnIndex:14];
-    card.disposable = [rs stringForColumnIndex:15];
-    card.sustained = [rs stringForColumnIndex:16];
+
     
     return card;
 }
@@ -38,7 +37,7 @@
 -(NSArray*)selectByNumber: (int)number {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
-    FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from cards where number='%d'", number]];
+    FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from card where number=%d", number]];
 
     while ([rs next]) {
         [result addObject:[self parseCards:rs]];
@@ -50,7 +49,7 @@
 -(NSArray*)selectByTitle:(NSString *)title {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
-    FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from cards where title like '%%%@%%'", title]];
+    FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from card where title like '%%%@%%'", title]];
     while ([rs next]) {
         [result addObject:[self parseCards:rs]];
     }
