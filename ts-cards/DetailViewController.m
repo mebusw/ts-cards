@@ -43,11 +43,11 @@ ADBannerView *adView;
 
         TSCard *card = (TSCard*)(self.detailItem);
         self.lblTitle.text = card.title;
-        self.lblNumber.text = card.number;
+        self.lblNumber.text = STR(@"#%@", card.number);
         self.lblEvent.text = card.event;
-        self.lblOps.text = card.ops;
+        self.lblOps.text = STR(@"Op %@", card.ops);
         self.lblSide.text = card.side;
-        self.lblPeriod.text = card.period;
+        self.lblPeriod.text = STR(NSLocalizedString(@"%@ War", nil), card.period);
     }
 }
 

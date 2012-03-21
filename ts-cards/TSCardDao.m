@@ -37,7 +37,7 @@
 -(NSArray*)selectByNumber: (int)number {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
-    FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from card where number=%d", number]];
+    FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from card where number='%d'", number]];
 
     while ([rs next]) {
         [result addObject:[self parseCards:rs]];

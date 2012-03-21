@@ -58,10 +58,10 @@
     UIAlertView* dialog = [[UIAlertView alloc] init];
     [dialog setDelegate:self];
     //TODO i18n
-    [dialog setTitle:@"Enter Name"];
+    [dialog setTitle:NSLocalizedString(@"Enter Card Number", nil)];
     [dialog setMessage:@" "];
-    [dialog addButtonWithTitle:@"Cancel"];
-    [dialog addButtonWithTitle:@"OK"];
+    [dialog addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
+    [dialog addButtonWithTitle:NSLocalizedString(@"OK", nil)];
     
     numberField = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 45.0, 245.0, 25.0)];
     [numberField setBackgroundColor:[UIColor whiteColor]];

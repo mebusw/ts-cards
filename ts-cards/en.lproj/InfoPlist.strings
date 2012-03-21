@@ -1,2 +1,6 @@
 /* Localized versions of Info.plist keys */
 
+"Enter Card Number" = "Enter Card Number";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"%@ War" = "%@ War";
