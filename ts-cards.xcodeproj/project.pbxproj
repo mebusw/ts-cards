@@ -10,7 +10,7 @@
 		8F2B56F41510DF3000BE3F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F31510DF3000BE3F48 /* UIKit.framework */; };
 		8F2B56F61510DF3000BE3F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F51510DF3000BE3F48 /* Foundation.framework */; };
 		8F2B56F81510DF3000BE3F48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2B56F71510DF3000BE3F48 /* CoreGraphics.framework */; };
-		8F2B56FE1510DF3000BE3F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B56FC1510DF3000BE3F48 /* InfoPlist.strings */; };
+		8F2B56FE1510DF3000BE3F48 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B56FC1510DF3000BE3F48 /* Localizable.strings */; };
 		8F2B57001510DF3000BE3F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B56FF1510DF3000BE3F48 /* main.m */; };
 		8F2B57041510DF3000BE3F48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57031510DF3000BE3F48 /* AppDelegate.m */; };
 		8F2B57071510DF3000BE3F48 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F2B57051510DF3000BE3F48 /* MainStoryboard.storyboard */; };
@@ -78,12 +78,12 @@
 		8F2B57541510E31600BE3F48 /* TSCardDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDao.m; sourceTree = "<group>"; };
 		8F2B57561510E70D00BE3F48 /* BaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDao.h; sourceTree = "<group>"; };
 		8F2B57571510E70D00BE3F48 /* BaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDao.m; sourceTree = "<group>"; };
-		8F2B57591510EAF800BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F2B57591510EAF800BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8F2B575A1510EB0100BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/ts.sqlite; sourceTree = "<group>"; };
 		8F2B575B1510EB0A00BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		8F2B575C1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/ts.sqlite"; sourceTree = "<absolute>"; };
 		8F2B575D1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
-		8F2B575E1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		8F2B575E1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/Localizable.strings"; sourceTree = "<absolute>"; };
 		8F2B57621510F0FE00BE3F48 /* TSCardDaoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCardDaoTest.h; sourceTree = "<group>"; };
 		8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDaoTest.m; sourceTree = "<group>"; };
 		8F3141411518E33C000EB574 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				8F2B56FB1510DF3000BE3F48 /* ts-cards-Info.plist */,
-				8F2B56FC1510DF3000BE3F48 /* InfoPlist.strings */,
+				8F2B56FC1510DF3000BE3F48 /* Localizable.strings */,
 				8F2B56FF1510DF3000BE3F48 /* main.m */,
 				8F2B57011510DF3000BE3F48 /* ts-cards-Prefix.pch */,
 			);
@@ -314,7 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2B56FE1510DF3000BE3F48 /* InfoPlist.strings in Resources */,
+				8F2B56FE1510DF3000BE3F48 /* Localizable.strings in Resources */,
 				8F2B57071510DF3000BE3F48 /* MainStoryboard.storyboard in Resources */,
 				8F2B574A1510E1D300BE3F48 /* ts.sqlite in Resources */,
 				8F80FBA515131C4300CCFB98 /* ICON@2x.png in Resources */,
@@ -386,13 +386,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8F2B56FC1510DF3000BE3F48 /* InfoPlist.strings */ = {
+		8F2B56FC1510DF3000BE3F48 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8F2B57591510EAF800BE3F48 /* en */,
 				8F2B575E1510EBEA00BE3F48 /* zh-Hans */,
 			);
-			name = InfoPlist.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		8F2B57051510DF3000BE3F48 /* MainStoryboard.storyboard */ = {

@@ -34,6 +34,8 @@
     NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:DB_NAME];
     success = [fm fileExistsAtPath:writableDBPath];
     NSLog(@"file exists %d", success);
+    
+    //copy the db no matter it exists, because no detection if user change language
     if(!success){
         NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:STR(@"%@.lproj/%@", [localizations objectAtIndex:0], DB_NAME)];
         success = [fm copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
