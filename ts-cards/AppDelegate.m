@@ -23,7 +23,7 @@
         NSLog(@"Localization: %@", string);
     }
     //TODO
-    //http://itunes.apple.com/cn/app/angry-birds/id343200656?mt=8
+    //http://itunes.apple.com/us/app/ts-cards/id512565583?ls=1&mt=8
     
     BOOL success;
     NSError *error;
@@ -35,7 +35,6 @@
     success = [fm fileExistsAtPath:writableDBPath];
     NSLog(@"file exists %d", success);
     
-    //copy the db no matter it exists, because no detection if user change language
     if(!success){
         NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:STR(@"%@.lproj/%@", [localizations objectAtIndex:0], DB_NAME)];
         success = [fm copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];

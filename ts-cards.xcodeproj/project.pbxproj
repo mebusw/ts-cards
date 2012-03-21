@@ -31,9 +31,9 @@
 		8F2B57641510F0FE00BE3F48 /* TSCardDaoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */; };
 		8F3141421518E33C000EB574 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3141411518E33C000EB574 /* iAd.framework */; };
 		8F80FBA31512F3CE00CCFB98 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F80FBA21512F3CE00CCFB98 /* libOCMock.a */; };
-		8F80FBA515131C4300CCFB98 /* ICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F80FBA415131C4300CCFB98 /* ICON@2x.png */; };
 		8F80FBC41513392600CCFB98 /* MasterVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC31513392600CCFB98 /* MasterVCTest.m */; };
 		8F80FBC7151339E300CCFB98 /* DetailVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC6151339E300CCFB98 /* DetailVCTest.m */; };
+		8FB6CC3E151A3708004AABFF /* ICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6CC3D151A3708004AABFF /* ICON@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,11 +88,11 @@
 		8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDaoTest.m; sourceTree = "<group>"; };
 		8F3141411518E33C000EB574 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8F80FBA21512F3CE00CCFB98 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
-		8F80FBA415131C4300CCFB98 /* ICON@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ICON@2x.png"; sourceTree = "<group>"; };
 		8F80FBC21513392600CCFB98 /* MasterVCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterVCTest.h; sourceTree = "<group>"; };
 		8F80FBC31513392600CCFB98 /* MasterVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterVCTest.m; sourceTree = "<group>"; };
 		8F80FBC5151339E300CCFB98 /* DetailVCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVCTest.h; sourceTree = "<group>"; };
 		8F80FBC6151339E300CCFB98 /* DetailVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVCTest.m; sourceTree = "<group>"; };
+		8FB6CC3D151A3708004AABFF /* ICON@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ICON@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 		8F2B56E41510DF3000BE3F48 = {
 			isa = PBXGroup;
 			children = (
-				8F80FBA415131C4300CCFB98 /* ICON@2x.png */,
+				8FB6CC3D151A3708004AABFF /* ICON@2x.png */,
 				8F2B56F91510DF3000BE3F48 /* ts-cards */,
 				8F2B571A1510DF3000BE3F48 /* ts-cardsTests */,
 				8F2B56F21510DF3000BE3F48 /* Frameworks */,
@@ -317,7 +317,7 @@
 				8F2B56FE1510DF3000BE3F48 /* Localizable.strings in Resources */,
 				8F2B57071510DF3000BE3F48 /* MainStoryboard.storyboard in Resources */,
 				8F2B574A1510E1D300BE3F48 /* ts.sqlite in Resources */,
-				8F80FBA515131C4300CCFB98 /* ICON@2x.png in Resources */,
+				8FB6CC3E151A3708004AABFF /* ICON@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
