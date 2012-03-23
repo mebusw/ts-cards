@@ -58,8 +58,8 @@
     UIAlertView* dialog = [[UIAlertView alloc] init];
     [dialog setDelegate:self];
 
-    //NSLog(@"%@", [[NSBundle mainBundle] localizations]);
-    //NSLog(@"%@", [NSLocale preferredLanguages]);
+    NSLog(@"%@", [[NSBundle mainBundle] localizations]);
+    NSLog(@"%@", [NSLocale preferredLanguages]);
     [dialog setTitle:NSLocalizedString(@"Enter Card Number", nil)];
     [dialog setMessage:@" "];
     [dialog addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];

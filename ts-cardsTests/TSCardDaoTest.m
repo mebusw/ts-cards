@@ -7,7 +7,6 @@
 //
 
 #import "TSCardDaoTest.h"
-#import "AppDelegate.h"
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 #import "TSCard.h"
@@ -17,9 +16,7 @@
 @implementation TSCardDaoTest
 
 -(void) testSelectByNumber {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSLog(@"db=%@", appDelegate.db);
-    
+   
     TSCardDao *dao = [[TSCardDao alloc] init];
     TSCard *card = (TSCard*)[[dao selectByNumber:25] objectAtIndex:0];
     NSLog(@"%@, %@", card.title, card.asia);

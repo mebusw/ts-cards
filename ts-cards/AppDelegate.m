@@ -60,9 +60,9 @@
 {
     // Override point for customization after application launch.
     
-    
-    NSLog(@"initDatabase=%d", [self initDatabase]);
-
+    BOOL dbInitResult = [self initDatabase];
+    NSLog(@"initDatabase=%d", dbInitResult);
+    dbInitResult |= YES;
     
     return YES;
 }
