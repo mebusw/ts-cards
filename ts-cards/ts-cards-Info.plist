@@ -14,8 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>屏幕快照 2012-03-16 下午2.56.54.png</string>
-				<string>ts114.png</string>
+				<string>ICON@2x.png</string>
+				<string>ICON.png</string>
 			</array>
 		</dict>
 	</dict>
