@@ -3,7 +3,7 @@
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development version="4200" defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -75,7 +75,7 @@
                             <outlet property="delegate" destination="12" id="15"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TS卡牌查询" id="36"/>
+                    <navigationItem key="navigationItem" title="冷战热斗卡牌查询" id="36"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="UBP-f5-F9V" id="hdW-TF-ByV"/>
                     </connections>
