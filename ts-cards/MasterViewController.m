@@ -32,30 +32,7 @@
     [super awakeFromNib];
 }
 
--(void) addGAD {
-    NSLog(@"");
-    // Note that the GADBannerView checks its frame size to determine what size
-    // creative to request.
-    
-    //Initialize the banner off the screen so that it animates up when displaying
-    bannerView_ = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
-                                                                     self.view.frame.size.height,
-                                                                     GAD_SIZE_320x50.width,
-                                                                     GAD_SIZE_320x50.height)];
-    // Note: Edit SampleConstants.h to provide a definition for kSampleAdUnitID
-    // before compiling.
-    bannerView_.adUnitID = GAD_PUBLISHER_ID;
-    bannerView_.delegate = (id)self;
-    [bannerView_ setRootViewController:self];
-    [self.view addSubview:bannerView_];
 
-    GADRequest *request = [GADRequest request];
-    //Make the request for a test ad
-//    request.testDevices = [NSArray arrayWithObjects:
-//                           GAD_SIMULATOR_ID,                               // Simulator
-//                           nil];
-    [bannerView_ loadRequest:request];
-}
 
 - (void)viewDidLoad
 {
@@ -66,21 +43,6 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
     self.navigationItem.rightBarButtonItem = addButton;
     [self addGAD];
-}
-
-
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    [UIView beginAnimations:@"BannerSlide" context:nil];
-    bannerView.frame = CGRectMake(0.0,
-                                  self.view.frame.size.height -
-                                  bannerView.frame.size.height,
-                                  bannerView.frame.size.width,
-                                  bannerView.frame.size.height);
-    [UIView commitAnimations];
-}
-
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
 - (void)viewDidUnload
@@ -148,11 +110,41 @@
         
     }
 
-    
-
 }
 
 
+#pragma mark - Google Ad
+-(void) addGAD {
+    bannerView_ = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
+                                                                  self.view.frame.size.height,
+                                                                  GAD_SIZE_320x50.width,
+                                                                  GAD_SIZE_320x50.height)];
+    bannerView_.adUnitID = GAD_PUBLISHER_ID;
+    bannerView_.delegate = (id)self;
+    [bannerView_ setRootViewController:self];
+    [self.view addSubview:bannerView_];
+    
+    GADRequest *request = [GADRequest request];
+    //Make the request for a test ad
+    //    request.testDevices = [NSArray arrayWithObjects:
+    //                           GAD_SIMULATOR_ID,                               // Simulator
+    //                           nil];
+    [bannerView_ loadRequest:request];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    [UIView beginAnimations:@"BannerSlide" context:nil];
+    bannerView.frame = CGRectMake(0.0,
+                                  self.view.frame.size.height -
+                                  bannerView.frame.size.height,
+                                  bannerView.frame.size.width,
+                                  bannerView.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
+}
 
 
 #pragma mark - Table View
