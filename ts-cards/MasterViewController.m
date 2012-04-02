@@ -5,6 +5,7 @@
 //  Created by mebusw on 12-3-14.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
+#import "GADBannerView.h"
 
 #import "MasterViewController.h"
 
@@ -14,8 +15,11 @@
 
 #define btnCancel   0
 #define btnOK   1
+#define GAD_PUBLISHER_ID @"a14f791eb38987e"
+
 @interface MasterViewController () {
     UITextField *numberField;
+    GADBannerView *bannerView_;
 }
 - (void) addButtonTapped:(id)sender;
 @end
@@ -28,6 +32,24 @@
     [super awakeFromNib];
 }
 
+-(void) addGAD {
+    NSLog(@"");
+    bannerView_ = [[GADBannerView alloc]
+                   initWithFrame:CGRectMake(0.0,
+                                            self.view.frame.size.height -
+                                            GAD_SIZE_320x50.height,
+                                            GAD_SIZE_320x50.width,
+                                            GAD_SIZE_320x50.height)];
+    bannerView_.adUnitID = GAD_PUBLISHER_ID;
+    bannerView_.rootViewController = self;
+    [self.view addSubview:bannerView_];
+    GADRequest *request = [GADRequest request];
+    request.testing = YES;
+    
+    [bannerView_ loadRequest:request];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,7 +58,22 @@
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    [self addGAD];
+}
 
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    [UIView beginAnimations:@"BannerSlide" context:nil];
+    bannerView.frame = CGRectMake(0.0,
+                                  self.view.frame.size.height -
+                                  bannerView.frame.size.height,
+                                  bannerView.frame.size.width,
+                                  bannerView.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
 - (void)viewDidUnload
