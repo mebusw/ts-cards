@@ -35,12 +35,21 @@ ADBannerView *adView;
     }
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    [self configureView];
+    [self addAdView];
+}
+
+
 - (void)configureView
 {
     // Update the user interface for the detail item.
-
+    
     if (self.detailItem) {
-
+        
         TSCard *card = (TSCard*)(self.detailItem);
         self.lblTitle.text = card.title;
         self.lblNumber.text = STR(@"#%@", card.number);
@@ -59,14 +68,6 @@ ADBannerView *adView;
     [self.view addSubview:adView];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
-    [self addAdView];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -77,10 +78,10 @@ ADBannerView *adView;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
-#pragma mark - AD Delegate Function
+#pragma mark - iAD Delegate Function
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
 {
