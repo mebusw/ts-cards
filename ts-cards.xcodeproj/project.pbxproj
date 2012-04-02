@@ -145,9 +145,6 @@
 		8F2B56E41510DF3000BE3F48 = {
 			isa = PBXGroup;
 			children = (
-				8F7C5813152958FC008BA804 /* SystemConfiguration.framework */,
-				8F7C5811152958F6008BA804 /* MessageUI.framework */,
-				8F7C580F152958E8008BA804 /* AudioToolbox.framework */,
 				8F7B7CC0151E22D7009CE3BB /* ICON.png */,
 				8FB6CC3D151A3708004AABFF /* ICON@2x.png */,
 				8F2B56F91510DF3000BE3F48 /* ts-cards */,
@@ -169,6 +166,9 @@
 		8F2B56F21510DF3000BE3F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F7C5813152958FC008BA804 /* SystemConfiguration.framework */,
+				8F7C5811152958F6008BA804 /* MessageUI.framework */,
+				8F7C580F152958E8008BA804 /* AudioToolbox.framework */,
 				8F3141411518E33C000EB574 /* iAd.framework */,
 				8F80FBA21512F3CE00CCFB98 /* libOCMock.a */,
 				8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */,

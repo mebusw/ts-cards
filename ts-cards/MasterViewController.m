@@ -126,9 +126,7 @@
     
     GADRequest *request = [GADRequest request];
     //Make the request for a test ad
-    //    request.testDevices = [NSArray arrayWithObjects:
-    //                           GAD_SIMULATOR_ID,                               // Simulator
-    //                           nil];
+    //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [bannerView_ loadRequest:request];
 }
 
