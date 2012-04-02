@@ -21,7 +21,8 @@
     UITextField *numberField;
     GADBannerView *bannerView_;
 }
-- (void) addButtonTapped:(id)sender;
+
+
 @end
 
 @implementation MasterViewController
@@ -32,14 +33,24 @@
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad
+- (void)addNavButtons
 {
-    [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(flipButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = flipButton;
+}
+
+- (void) flipButtonTapped:(id)sender {
+    
+}
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self addNavButtons];
     [self addGAD];
 }
 
@@ -56,90 +67,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
-}
-
-- (void) addButtonTapped:(id)sender {
-    UIAlertView* dialog = [[UIAlertView alloc] init];
-    [dialog setDelegate:self];
-
-    NSLog(@"%@", [[NSBundle mainBundle] localizations]);
-    NSLog(@"%@", [NSLocale preferredLanguages]);
-    [dialog setTitle:NSLocalizedString(@"Enter Card Number", nil)];
-    [dialog setMessage:@" "];
-    [dialog addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
-    [dialog addButtonWithTitle:NSLocalizedString(@"OK", nil)];
-    
-    numberField = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 45.0, 245.0, 25.0)];
-    [numberField setBackgroundColor:[UIColor whiteColor]];
-    numberField.keyboardType = UIKeyboardTypeNumberPad;
-    
-    [dialog addSubview:numberField];
-    CGAffineTransform moveUp = CGAffineTransformMakeTranslation(0.0, -50.0);
-    [dialog setTransform: moveUp];
-    [dialog show];
-    [numberField becomeFirstResponder];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (btnOK == buttonIndex) {
-        [self insertNewCard:[numberField.text intValue]];
-    }
-}
-
-
--(void) insertNewCard:(int)number {
-    TSCardDao *dao = [[TSCardDao alloc] init];
-    
-    
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    
-    @try {
-        TSCard *card = (TSCard*)[[dao selectByNumber:number] objectAtIndex:0];
-        [_objects insertObject:card atIndex:0];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@", [exception reason]);
-    }
-    @finally {
-        
-    }
-
-}
-
-
-#pragma mark - Google Ad
--(void) addGAD {
-    bannerView_ = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
-                                                                  self.view.frame.size.height,
-                                                                  GAD_SIZE_320x50.width,
-                                                                  GAD_SIZE_320x50.height)];
-    bannerView_.adUnitID = GAD_PUBLISHER_ID;
-    bannerView_.delegate = (id)self;
-    [bannerView_ setRootViewController:self];
-    [self.view addSubview:bannerView_];
-    
-    GADRequest *request = [GADRequest request];
-    //Make the request for a test ad
-    //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
-    [bannerView_ loadRequest:request];
-}
-
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    [UIView beginAnimations:@"BannerSlide" context:nil];
-    bannerView.frame = CGRectMake(0.0,
-                                  self.view.frame.size.height -
-                                  bannerView.frame.size.height,
-                                  bannerView.frame.size.width,
-                                  bannerView.frame.size.height);
-    [UIView commitAnimations];
-}
-
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 }
 
 
@@ -200,30 +127,32 @@
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         TSCard *card = [_searchResults objectAtIndex:[indexPath row]];
         
-        [self insertNewCard:[card.number intValue]];
+        [self insertNewCard:card];
 
         [self.searchDisplayController setActive:NO animated:YES];
     }
-    
-
 }
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
+-(void) insertNewCard:(TSCard*)card {   
+    if (!_objects) {
+        _objects = [[NSMutableArray alloc] init];
+    }
+    
+    @try {
+        [_objects insertObject:card atIndex:0];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", [exception reason]);
+    }
+    @finally {
+        
+    }
+    
+}
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
+#pragma mark - segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -244,6 +173,36 @@
     }
     return NO;
 }
+
+#pragma mark - Google Ad
+-(void) addGAD {
+    bannerView_ = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
+    bannerView_.adUnitID = GAD_PUBLISHER_ID;
+    bannerView_.delegate = (id)self;
+    [bannerView_ setRootViewController:self];
+    [self.view addSubview:bannerView_];
+    
+    GADRequest *request = [GADRequest request];
+    /*Make the request for a test ad*/
+    //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
+    [bannerView_ loadRequest:request];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    [UIView beginAnimations:@"BannerSlide" context:nil];
+    bannerView.frame = CGRectMake(0.0,
+                                  self.view.frame.size.height -
+                                  bannerView.frame.size.height,
+                                  bannerView.frame.size.width,
+                                  bannerView.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
+}
+
+
 
 
 @end

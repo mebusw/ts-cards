@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TSCard.h"
 @interface MasterViewController : UITableViewController {
     
 }
@@ -15,6 +15,6 @@
 @property (nonatomic, strong) NSMutableArray *_objects;
 @property (nonatomic, strong) NSArray *_searchResults;
 
--(void) insertNewCard:(int)number;
+-(void) insertNewCard:(TSCard*)card;
 
 @end

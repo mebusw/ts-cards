@@ -58,12 +58,14 @@
     id tableViewMock = [OCMockObject partialMockForObject:controller.tableView];
     [[tableViewMock expect] insertRowsAtIndexPaths:[OCMArg any] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    [controller insertNewCard:[number intValue]];
+    TSCard *card = [[TSCard alloc] init];
+    card.number = number;
+    [controller insertNewCard:card];
 
     [tableViewMock verify];
-    TSCard *card = [controller._objects objectAtIndex:0];
+    TSCard *card0 = [controller._objects objectAtIndex:0];
     STAssertEquals(1u, [controller._objects count], @"");
-    STAssertEqualStr(number, card.number, @"");
+    STAssertEqualStr(number, card0.number, @"");
 }
 
 - (void) test_prepareForSegue {
