@@ -5,6 +5,7 @@
 //  Created by mebusw on 12-3-14.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
+#import <GameKit/GameKit.h>
 
 #import "AppDelegate.h"
 #import "TSCardDao.h"
@@ -63,7 +64,14 @@
     BOOL dbInitResult = [self initDatabase];
     NSLog(@"initDatabase=%d", dbInitResult);
     dbInitResult |= YES;
+
     
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
+        // If there is an error, do not assume local player is not authenticated. 
+        NSLog(@"isAuthenticated %d |  %d", localPlayer.isAuthenticated, [error code]);
+    }];
+            
     return YES;
 }
 							

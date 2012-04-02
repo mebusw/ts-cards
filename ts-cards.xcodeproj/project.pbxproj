@@ -35,6 +35,7 @@
 		8F7C5810152958E8008BA804 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7C580F152958E8008BA804 /* AudioToolbox.framework */; };
 		8F7C5812152958F6008BA804 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7C5811152958F6008BA804 /* MessageUI.framework */; };
 		8F7C5814152958FC008BA804 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7C5813152958FC008BA804 /* SystemConfiguration.framework */; };
+		8F7C582B15298447008BA804 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7C582A15298447008BA804 /* GameKit.framework */; };
 		8F80FBA31512F3CE00CCFB98 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F80FBA21512F3CE00CCFB98 /* libOCMock.a */; };
 		8F80FBC41513392600CCFB98 /* MasterVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC31513392600CCFB98 /* MasterVCTest.m */; };
 		8F80FBC7151339E300CCFB98 /* DetailVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC6151339E300CCFB98 /* DetailVCTest.m */; };
@@ -103,6 +104,7 @@
 		8F7C580F152958E8008BA804 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8F7C5811152958F6008BA804 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8F7C5813152958FC008BA804 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8F7C582A15298447008BA804 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8F80FBA21512F3CE00CCFB98 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		8F80FBC21513392600CCFB98 /* MasterVCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterVCTest.h; sourceTree = "<group>"; };
 		8F80FBC31513392600CCFB98 /* MasterVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterVCTest.m; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F7C582B15298447008BA804 /* GameKit.framework in Frameworks */,
 				8F7C580C152958B4008BA804 /* libGoogleAdMobAds.a in Frameworks */,
 				8F2B56F81510DF3000BE3F48 /* CoreGraphics.framework in Frameworks */,
 				8F7C5814152958FC008BA804 /* SystemConfiguration.framework in Frameworks */,
@@ -145,9 +148,6 @@
 		8F2B56E41510DF3000BE3F48 = {
 			isa = PBXGroup;
 			children = (
-				8F7C5813152958FC008BA804 /* SystemConfiguration.framework */,
-				8F7C5811152958F6008BA804 /* MessageUI.framework */,
-				8F7C580F152958E8008BA804 /* AudioToolbox.framework */,
 				8F7B7CC0151E22D7009CE3BB /* ICON.png */,
 				8FB6CC3D151A3708004AABFF /* ICON@2x.png */,
 				8F2B56F91510DF3000BE3F48 /* ts-cards */,
@@ -169,6 +169,10 @@
 		8F2B56F21510DF3000BE3F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F7C582A15298447008BA804 /* GameKit.framework */,
+				8F7C5813152958FC008BA804 /* SystemConfiguration.framework */,
+				8F7C5811152958F6008BA804 /* MessageUI.framework */,
+				8F7C580F152958E8008BA804 /* AudioToolbox.framework */,
 				8F3141411518E33C000EB574 /* iAd.framework */,
 				8F80FBA21512F3CE00CCFB98 /* libOCMock.a */,
 				8F2B57401510E0AF00BE3F48 /* libsqlite3.dylib */,

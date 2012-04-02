@@ -6,6 +6,7 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 #import "GADBannerView.h"
+#import <GameKit/GameKit.h>
 
 #import "MasterViewController.h"
 
@@ -20,6 +21,7 @@
 @interface MasterViewController () {
     UITextField *numberField;
     GADBannerView *bannerView_;
+    double achievementsPercentageComplete;
 }
 - (void) addButtonTapped:(id)sender;
 @end
@@ -40,9 +42,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAchievementsThenAddExampleAchievement)];
     self.navigationItem.rightBarButtonItem = addButton;
     [self addGAD];
+
 }
 
 - (void)viewDidUnload
@@ -112,6 +116,72 @@
 
 }
 
+#pragma mark - game center
+
+- (IBAction)showAchievementsThenAddExampleAchievement
+{
+    NSLog(@"1");
+    
+    [self showAchievementsViewController];    
+    NSLog(@"2");
+    NSString * identifier       =   @"Achievement001";
+    
+    // Clear all progress saved on Game Center
+//    [GKAchievement resetAchievementsWithCompletionHandler:^(NSError *error)
+//     {
+//         if (error != nil) ;
+//             // handle errors
+//     }];
+    
+    // Submit an achievement for pressing this button 
+    GKAchievement * achievement = [[GKAchievement alloc] initWithIdentifier:identifier];
+    achievementsPercentageComplete += 25;
+    achievement.showsCompletionBanner = YES;
+    [achievement setPercentComplete: achievementsPercentageComplete];
+
+    NSLog(@"%@", achievement);
+    
+    if (achievement) {
+        // Submit the achievement. 
+        [achievement reportAchievementWithCompletionHandler: ^(NSError *error){
+            if (error) {
+                // Store achievement to be submitted at a later time. 
+                NSLog(@"error %@", [error localizedDescription]);
+                //[self storeAchievement:achievement];
+            } else {
+                NSLog(@"success and may re-submit others");
+//                if ([storedAchievements objectForKey:achievement.identifier]) {
+//                    // Achievement is reported, remove from store. 
+//                    [storedAchievements removeObjectForKey:achievement.identifier];
+//                } 
+//                [self resubmitStoredAchievements];
+            }
+        }];
+    }
+    
+}
+
+
+
+// View a list of unlocked achievements 
+- (void)showAchievementsViewController
+{
+    if ([self modalViewController]) {
+        [self dismissModalViewControllerAnimated:NO];
+    }
+    GKAchievementViewController * achievementViewController = [[GKAchievementViewController alloc] init];
+    [achievementViewController setAchievementDelegate:self];
+    [self presentModalViewController:achievementViewController animated:YES];
+}
+
+// Dismiss the achievement viewController 
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController 
+{
+    if ([self modalViewController]) {
+        // If there could be multiple modal ViewControllers up, a check is necessary.
+        [self dismissModalViewControllerAnimated: YES];
+    }
+}
 
 #pragma mark - Google Ad
 -(void) addGAD {
