@@ -25,6 +25,15 @@
 
 }
 
+-(void) testSelectByInvalidNumber {
+    
+    TSCardDao *dao = [[TSCardDao alloc] init];
+    NSArray *a = [dao selectByNumber:200];
+    STAssertEquals(0U, [a count], @"");
+
+    
+}
+
 -(void) testSelectByTitle {
    
     TSCardDao *dao = [[TSCardDao alloc] init];
@@ -33,4 +42,19 @@
     STAssertEqualStr(@"89", card.number, @"");
     STAssertNotNil(card.asia, @"");    
 }
+
+
+
+-(void) testSelectByTitleOrNumber {
+    
+    TSCardDao *dao = [[TSCardDao alloc] init];
+    NSArray *a = [dao selectByTitleOrNumber:@"7"];
+
+    TSCard *card1 = [a objectAtIndex:0];
+    STAssertEqualStr(@"社会主义政府", card1.title, @"");
+    TSCard *card2 = [a objectAtIndex:1];
+    STAssertEqualStr(@"苏联击落 KAL-007*", card2.title, @"");
+  
+}
+
 @end

@@ -13,4 +13,6 @@
 
 -(NSArray*)selectByNumber: (int)number;
 -(NSArray*)selectByTitle: (NSString*)title;
+-(NSArray*)selectByTitleOrNumber:(NSString *)str;
+
 @end

@@ -57,5 +57,15 @@
     return result;
 }
 
+-(NSArray*)selectByTitleOrNumber:(NSString *)str {
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    FMResultSet *rs = [db executeQuery: [NSString stringWithFormat:@"select * from card where title like '%%%@%%' or number='%@'", str, str]];
+    while ([rs next]) {
+        [result addObject:[self parseCards:rs]];
+    }
+    [rs close];
+    return result;
+}
 
 @end

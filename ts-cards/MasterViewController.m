@@ -32,8 +32,6 @@
     [super awakeFromNib];
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,7 +55,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void) addButtonTapped:(id)sender {
@@ -240,7 +238,7 @@
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     TSCardDao *dao = [[TSCardDao alloc] init];
     if (![searchString isEqualToString:@""]) {
-        _searchResults = [dao selectByTitle:searchString];
+        _searchResults = [dao selectByTitleOrNumber:searchString];
         NSLog(@"%@", _searchResults);
         return YES;
     }
