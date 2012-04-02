@@ -54,7 +54,7 @@ ADBannerView *adView;
         self.lblTitle.text = card.title;
         self.lblNumber.text = STR(@"#%@", card.number);
         self.lblEvent.text = card.event;
-        self.lblOps.text = STR(@"Op %@", card.ops);
+        self.lblOps.text = STR(NSLocalizedString(@"%@Ops", nil), card.ops);
         self.lblSide.text = card.side;
         self.lblPeriod.text = STR(NSLocalizedString(@"%@ War", nil), card.period);
     }
@@ -78,7 +78,7 @@ ADBannerView *adView;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - iAD Delegate Function
