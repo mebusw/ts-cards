@@ -73,9 +73,8 @@
 
 
 - (void) actionButtonTapped:(id)sender {
-    UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:STR(NSLocalizedString(@"Only Avaliable in Full Version", nil)) delegate:self cancelButtonTitle:STR(NSLocalizedString(@"Cancel", nil)) destructiveButtonTitle:nil otherButtonTitles:STR(NSLocalizedString(@"Remove All Results", nil)), STR(NSLocalizedString(@"Add All Cards", nil)), nil];
+    UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Only Avaliable in Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Remove All Results"), I18N(@"Add All Cards"), nil];
     [actions showInView:self.view];
-    
 }
 
 #pragma mark - Table View

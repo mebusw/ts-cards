@@ -20,6 +20,8 @@
 #   define DLog(...) {}
 #endif
 
-#define STR(format...)     ([NSString stringWithFormat:format])
+#define STR(format...)     [NSString stringWithFormat:format]
+
+#define I18N(localizedStr, ...)   [NSString stringWithFormat:NSLocalizedString(localizedStr, nil), ##__VA_ARGS__]         
 
 #define STAssertEqualStr(expect, actual, msg, ...) STAssertTrue([expect isEqualToString:actual], @"expect=<%@>, but actual=<%@>. " msg, expect, actual, ##__VA_ARGS__);

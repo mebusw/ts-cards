@@ -54,9 +54,9 @@ ADBannerView *iAdBanner;
         self.lblTitle.text = card.title;
         self.lblNumber.text = STR(@"#%@", card.number);
         self.lblEvent.text = card.event;
-        self.lblOps.text = STR(NSLocalizedString(@"%@Ops", nil), card.ops);
+        self.lblOps.text = I18N(@"%@Ops", card.ops);
         self.lblSide.text = card.side;
-        self.lblPeriod.text = STR(NSLocalizedString(@"%@ War", nil), card.period);
+        self.lblPeriod.text = I18N(@"%@ War", card.period);
     }
 }
 
