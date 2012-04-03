@@ -72,7 +72,7 @@ ADBannerView *adView;
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    NSLog(@"");
+    DLog(@"");
 
 }
 
@@ -85,20 +85,20 @@ ADBannerView *adView;
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
 {
-	NSLog(@"ad: bannerViewActionShouldBegin");
+	DLog(@"ad: bannerViewActionShouldBegin");
     
 	return YES;
 }
 
 -(void) bannerViewActionDidFinish:(ADBannerView *)banner
 {
-	NSLog(@"ad: bannerViewActionDidFinish");
+	DLog(@"ad: bannerViewActionDidFinish");
     
 }
 
 -(void) bannerViewDidLoadAd:(ADBannerView *)banner
 {
-	NSLog(@"ad: bannerViewDidLoadAd");
+	DLog(@"ad: bannerViewDidLoadAd");
 	
     [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
     // banner is invisible now and moved out of the screen on 50 px
@@ -113,7 +113,7 @@ ADBannerView *adView;
 
 -(void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-	NSLog(@"ad: bannerView error:%@", error);
+	DLog(@"ad: bannerView error:%@", error);
 	
     [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
     // banner is visible and we move it out of the screen, due to connection issue

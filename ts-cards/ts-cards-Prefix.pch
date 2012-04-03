@@ -15,9 +15,9 @@
 
 
 #ifdef DEBUG
-#   define NSLog(fmt, ...) NSLog((@"%s<Ln%d> " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#   define DLog(fmt, ...) NSLog((@"%s<Ln%d> " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#   define NSLog(...) {}
+#   define DLog(...) {}
 #endif
 
 #define STR(format...)     ([NSString stringWithFormat:format])

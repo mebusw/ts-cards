@@ -20,7 +20,7 @@
     
     NSArray *localizations = [[NSBundle mainBundle] preferredLocalizations];
     for (NSString *string in localizations) {
-        NSLog(@"Localization: %@", string);
+        DLog(@"Localization: %@", string);
     }
     //TODO
     //http://itunes.apple.com/us/app/ts-cards/id512565583?ls=1&mt=8
@@ -30,16 +30,16 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSLog(@"%@", documentsDirectory);
+    DLog(@"%@", documentsDirectory);
     NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:DB_NAME];
     success = [fm fileExistsAtPath:writableDBPath];
-    NSLog(@"file exists %d", success);
+    DLog(@"file exists %d", success);
     
     if(!success){
         NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:STR(@"%@.lproj/%@", [localizations objectAtIndex:0], DB_NAME)];
         success = [fm copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
         if(!success){
-            NSLog(@"%@", [error localizedDescription]);
+            DLog(@"%@", [error localizedDescription]);
             success = NO;
         }
     }
@@ -48,7 +48,7 @@
         if ([db open]) {
             [db setShouldCacheStatements:YES];
         }else{
-            NSLog(@"Failed to open database.");
+            DLog(@"Failed to open database.");
             success = NO;
         }
     }
@@ -61,7 +61,7 @@
     // Override point for customization after application launch.
     
     BOOL dbInitResult = [self initDatabase];
-    NSLog(@"initDatabase=%d", dbInitResult);
+    DLog(@"initDatabase=%d", dbInitResult);
     dbInitResult |= YES;
     
     return YES;

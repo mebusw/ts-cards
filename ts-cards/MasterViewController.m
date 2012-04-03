@@ -58,6 +58,8 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    bannerView_.delegate = nil;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -144,7 +146,7 @@
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     @catch (NSException *exception) {
-        NSLog(@"%@", [exception reason]);
+        DLog(@"%@", [exception reason]);
     }
     @finally {
         
@@ -168,7 +170,7 @@
     TSCardDao *dao = [[TSCardDao alloc] init];
     if (![searchString isEqualToString:@""]) {
         _searchResults = [dao selectByTitleOrNumber:searchString];
-        NSLog(@"%@", _searchResults);
+        DLog(@"%@", _searchResults);
         return YES;
     }
     return NO;
@@ -179,10 +181,11 @@
     bannerView_ = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
     bannerView_.adUnitID = GAD_PUBLISHER_ID;
     bannerView_.delegate = (id)self;
-    [bannerView_ setRootViewController:self];
+    [bannerView_ setRootViewController:self.navigationController];
     [self.view addSubview:bannerView_];
     
     GADRequest *request = [GADRequest request];
+
     /*Make the request for a test ad*/
     //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [bannerView_ loadRequest:request];
@@ -196,10 +199,12 @@
                                   bannerView.frame.size.width,
                                   bannerView.frame.size.height);
     [UIView commitAnimations];
+    DLog(@"hasAutoRefreshed=%d", [bannerView hasAutoRefreshed]);
 }
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
+
 }
 
 
