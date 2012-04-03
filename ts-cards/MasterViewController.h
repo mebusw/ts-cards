@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TSCard.h"
-@interface MasterViewController : UITableViewController {
+@interface MasterViewController : UITableViewController<UIActionSheetDelegate> {
     
 }
 

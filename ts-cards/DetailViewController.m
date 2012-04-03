@@ -64,7 +64,7 @@ ADBannerView *iAdBanner;
     iAdBanner = [[ADBannerView alloc] initWithFrame:CGRectZero];
     iAdBanner.delegate = (id)self;
     CGSize size = self.view.frame.size;
-    iAdBanner.center = CGPointMake(size.width / 2, 0);
+    iAdBanner.center = CGPointMake(size.width / 2, -30);
     [self.view addSubview:iAdBanner];
 }
 

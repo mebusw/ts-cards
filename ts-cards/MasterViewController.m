@@ -38,13 +38,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
-    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(flipButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = flipButton;
+    UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = actionButton;
 }
 
-- (void) flipButtonTapped:(id)sender {
-    
-}
+
 
 
 - (void)viewDidLoad
@@ -71,6 +69,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Action Button
+
+
+- (void) actionButtonTapped:(id)sender {
+    UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:STR(NSLocalizedString(@"Only Avaliable in Full Version", nil)) delegate:self cancelButtonTitle:STR(NSLocalizedString(@"Cancel", nil)) destructiveButtonTitle:nil otherButtonTitles:STR(NSLocalizedString(@"Remove All Results", nil)), STR(NSLocalizedString(@"Add All Cards", nil)), nil];
+    [actions showInView:self.view];
+    
+}
 
 #pragma mark - Table View
 
@@ -154,7 +160,7 @@
     
 }
 
-#pragma mark - segue
+#pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -164,7 +170,7 @@
     }
 }
 
-#pragma mark - search view controller
+#pragma mark - Search view controller
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     TSCardDao *dao = [[TSCardDao alloc] init];
