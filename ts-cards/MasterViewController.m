@@ -33,17 +33,6 @@
     [super awakeFromNib];
 }
 
-- (void)addNavButtons
-{
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = actionButton;
-}
-
-
-
 
 - (void)viewDidLoad
 {
@@ -51,6 +40,17 @@
     [self addNavButtons];
     [self addGAD];
 }
+
+- (void)addNavButtons
+{
+	// Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = actionButton;
+    
+}
+
 
 - (void)viewDidUnload
 {
@@ -82,6 +82,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return I18N(@"My Collections");
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
