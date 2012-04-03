@@ -20,7 +20,7 @@
 
 @synthesize lblTitle, lblNumber, lblEvent, lblOps, lblSide, lblPeriod;
 
-ADBannerView *adView;
+ADBannerView *iAdBanner;
 
 
 #pragma mark - Managing the detail item
@@ -61,11 +61,11 @@ ADBannerView *adView;
 }
 
 -(void) addAdView {
-    adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-    adView.delegate = (id)self;
+    iAdBanner = [[ADBannerView alloc] initWithFrame:CGRectZero];
+    iAdBanner.delegate = (id)self;
     CGSize size = self.view.frame.size;
-    adView.center = CGPointMake(size.width / 2, size.height);
-    [self.view addSubview:adView];
+    iAdBanner.center = CGPointMake(size.width / 2, 0);
+    [self.view addSubview:iAdBanner];
 }
 
 - (void)viewDidUnload
@@ -85,39 +85,39 @@ ADBannerView *adView;
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
 {
-	DLog(@"ad: bannerViewActionShouldBegin");
+	DLog(@"iAd: bannerViewActionShouldBegin");
     
 	return YES;
 }
 
 -(void) bannerViewActionDidFinish:(ADBannerView *)banner
 {
-	DLog(@"ad: bannerViewActionDidFinish");
+	DLog(@"iAd: bannerViewActionDidFinish");
     
 }
 
 -(void) bannerViewDidLoadAd:(ADBannerView *)banner
 {
-	DLog(@"ad: bannerViewDidLoadAd");
+	DLog(@"iAd: bannerViewDidLoadAd");
 	
     [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
     // banner is invisible now and moved out of the screen on 50 px
     [UIView setAnimationDuration:1.0];
     CGSize size = self.view.frame.size;
-    adView.center = CGPointMake(size.width / 2, size.height - 25);
-    adView.hidden = NO;
+    iAdBanner.center = CGPointMake(size.width / 2, iAdBanner.frame.size.height / 2);
+    iAdBanner.hidden = NO;
     [UIView commitAnimations];
     
-	
+
 }
 
 -(void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-	DLog(@"ad: bannerView error:%@", error);
+	NSLog(@"iAd: bannerView error:%@", error);
 	
     [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
     // banner is visible and we move it out of the screen, due to connection issue
-    adView.hidden = YES;
+    iAdBanner.hidden = YES;
     [UIView commitAnimations];
     
 }

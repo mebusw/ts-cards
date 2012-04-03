@@ -19,7 +19,7 @@
 
 @interface MasterViewController () {
     UITextField *numberField;
-    GADBannerView *bannerView_;
+    GADBannerView *gAdBanner;
 }
 
 
@@ -58,7 +58,7 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    bannerView_.delegate = nil;
+    gAdBanner.delegate = nil;
 
 }
 
@@ -178,32 +178,32 @@
 
 #pragma mark - Google Ad
 -(void) addGAD {
-    bannerView_ = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
-    bannerView_.adUnitID = GAD_PUBLISHER_ID;
-    bannerView_.delegate = (id)self;
-    [bannerView_ setRootViewController:self.navigationController];
-    [self.view addSubview:bannerView_];
+    gAdBanner = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
+    gAdBanner.adUnitID = GAD_PUBLISHER_ID;
+    gAdBanner.delegate = (id)self;
+    [gAdBanner setRootViewController:self.navigationController];
+    [self.navigationController.view addSubview:gAdBanner];
     
     GADRequest *request = [GADRequest request];
 
     /*Make the request for a test ad*/
     //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
-    [bannerView_ loadRequest:request];
+    [gAdBanner loadRequest:request];
 }
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
     [UIView beginAnimations:@"BannerSlide" context:nil];
     bannerView.frame = CGRectMake(0.0,
-                                  self.view.frame.size.height -
+                                  self.navigationController.view.frame.size.height -
                                   bannerView.frame.size.height,
                                   bannerView.frame.size.width,
                                   bannerView.frame.size.height);
     [UIView commitAnimations];
-    DLog(@"hasAutoRefreshed=%d", [bannerView hasAutoRefreshed]);
+    DLog(@"gAd: hasAutoRefreshed=%d", [bannerView hasAutoRefreshed]);
 }
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
+    NSLog(@"gAd: adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 
 }
 
