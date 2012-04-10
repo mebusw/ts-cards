@@ -16,6 +16,7 @@
 #define btnCancel   0
 #define btnOK   1
 #define GAD_PUBLISHER_ID @"a14f791eb38987e"
+#define PRODUCT_ID  @"A1"
 
 @interface MasterViewController () {
     UITextField *numberField;
@@ -40,6 +41,8 @@
     [self addNavButtons];
     [self addGAD];
 }
+
+
 
 - (void)addNavButtons
 {
@@ -75,6 +78,120 @@
 - (void) actionButtonTapped:(id)sender {
     UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Only Avaliable in Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Remove All Collections"), I18N(@"Add All Cards"), nil];
     [actions showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"%d", buttonIndex);
+    
+    if ([SKPaymentQueue canMakePayments]) {
+        //[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+        //[self RequestProductData];
+        NSLog(@"允许程序内付费购买");
+        [self requestProductData];
+    }
+    else
+    {
+        NSLog(@"不允许程序内付费购买");
+        UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                            message:@"You can‘t purchase in app store（Himi说你没允许应用程序内购买）"
+                                                           delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];    
+        
+        [alerView show];
+        
+    }
+    
+}
+
+
+
+#pragma mark - In-App Purchase
+
+- (void) requestProductData
+{
+    SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:
+                                 [NSSet setWithObject:PRODUCT_ID]];
+    request.delegate = (id)self;
+    [request start];
+}
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
+{
+    NSArray *myProducts = response.products;
+    // Populate your UI from the products list.
+    // Save a reference to the products list.
+    NSLog(@"-----------收到产品反馈信息--------------");
+    NSLog(@"产品Product ID:%@",response.invalidProductIdentifiers);
+    NSLog(@"产品付费数量: %d", [myProducts count]);
+    // populate UI
+    for(SKProduct *product in myProducts){
+        NSLog(@"product info");
+        NSLog(@"SKProduct 描述信息%@", [product description]);
+        NSLog(@"产品标题 %@" , product.localizedTitle);
+        NSLog(@"产品描述信息: %@" , product.localizedDescription);
+        NSLog(@"价格: %@" , product.price);
+        NSLog(@"Product id: %@" , product.productIdentifier);
+    }
+    
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:(id)self];
+    
+    SKProduct *selectedProduct = [myProducts objectAtIndex:0];
+    SKPayment *payment = [SKPayment paymentWithProduct:selectedProduct];
+    //payment.quantity = 1;
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+{
+    for (SKPaymentTransaction *transaction in transactions)
+    {
+        switch (transaction.transactionState)
+        {
+            case SKPaymentTransactionStatePurchased:
+                [self completeTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateFailed:
+                [self failedTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+                [self restoreTransaction:transaction];
+            default:
+                break;
+        }
+    }
+}
+
+- (void) completeTransaction: (SKPaymentTransaction *)transaction
+{
+    // Your application should implement these two methods.
+    [self recordTransaction:transaction];
+    [self provideContent:transaction.payment.productIdentifier];
+    
+    // Remove the transaction from the payment queue.
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void) restoreTransaction: (SKPaymentTransaction *)transaction
+{
+    [self recordTransaction: transaction];
+    [self provideContent: transaction.originalTransaction.payment.productIdentifier];
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void) failedTransaction: (SKPaymentTransaction *)transaction
+{
+    if (transaction.error.code != SKErrorPaymentCancelled) {
+        // Optionally, display an error here.
+        NSLog(@"");
+    }
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+-(void) recordTransaction: (SKPaymentTransaction *)transaction {
+    
+}
+
+-(void) provideContent:(NSString*) productId {
+    
 }
 
 #pragma mark - Table View
