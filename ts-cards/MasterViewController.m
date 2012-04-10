@@ -158,6 +158,9 @@
         DLog(@"%d", transaction.transactionState);
         switch (transaction.transactionState)
         {
+            case SKPaymentTransactionStatePurchasing:
+                DLog(@"buying");
+                break;
             case SKPaymentTransactionStatePurchased:
                 [self completeTransaction:transaction];
                 break;
@@ -166,6 +169,7 @@
                 break;
             case SKPaymentTransactionStateRestored:
                 [self restoreTransaction:transaction];
+                break;
             default:
                 break;
         }
