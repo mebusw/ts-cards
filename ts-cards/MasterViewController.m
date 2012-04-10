@@ -81,17 +81,17 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"%d", buttonIndex);
+    DLog(@"%d", buttonIndex);
     
     if ([SKPaymentQueue canMakePayments]) {
         //[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
         //[self RequestProductData];
-        NSLog(@"允许程序内付费购买");
+        DLog(@"Allow IAP");
         [self requestProductData];
     }
     else
     {
-        NSLog(@"不允许程序内付费购买");
+        DLog(@"Unallow IAP");
         UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
                                                             message:@"You can‘t purchase in app store（Himi说你没允许应用程序内购买）"
                                                            delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];    
@@ -108,35 +108,46 @@
 
 - (void) requestProductData
 {
+    DLog(@"-->");
     SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:
-                                 [NSSet setWithObject:PRODUCT_ID]];
+                                 [NSSet setWithObjects:@"A1", @"A2", nil]];
     request.delegate = (id)self;
     [request start];
 }
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
     NSArray *myProducts = response.products;
+    DLog(@"p count=%d", [myProducts count]);
+    DLog(@"invalid p: %@", response.invalidProductIdentifiers);
     // Populate your UI from the products list.
     // Save a reference to the products list.
-    NSLog(@"-----------收到产品反馈信息--------------");
-    NSLog(@"产品Product ID:%@",response.invalidProductIdentifiers);
-    NSLog(@"产品付费数量: %d", [myProducts count]);
+    
+
     // populate UI
     for(SKProduct *product in myProducts){
-        NSLog(@"product info");
-        NSLog(@"SKProduct 描述信息%@", [product description]);
-        NSLog(@"产品标题 %@" , product.localizedTitle);
-        NSLog(@"产品描述信息: %@" , product.localizedDescription);
-        NSLog(@"价格: %@" , product.price);
-        NSLog(@"Product id: %@" , product.productIdentifier);
+        DLog(@"product info");
+        DLog(@"SKProduct 描述信息%@", [product description]);
+        DLog(@"产品标题 %@" , product.localizedTitle);
+        DLog(@"产品描述信息: %@" , product.localizedDescription);
+        DLog(@"价格: %@" , product.price);
+        DLog(@"Product id: %@" , product.productIdentifier);
     }
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:(id)self];
     
-    SKProduct *selectedProduct = [myProducts objectAtIndex:0];
-    SKPayment *payment = [SKPayment paymentWithProduct:selectedProduct];
-    //payment.quantity = 1;
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
+    @try {
+        SKProduct *selectedProduct = [myProducts objectAtIndex:0];
+        SKPayment *payment = [SKPayment paymentWithProduct:selectedProduct];
+        //payment.quantity = 1;
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+
+    }
+    @catch (NSException *exception) {
+        DLog(@"exception");
+    }
+    @finally {
+        ;
+    }
 }
 
 
@@ -144,6 +155,7 @@
 {
     for (SKPaymentTransaction *transaction in transactions)
     {
+        DLog(@"%d", transaction.transactionState);
         switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchased:
@@ -181,7 +193,7 @@
 {
     if (transaction.error.code != SKErrorPaymentCancelled) {
         // Optionally, display an error here.
-        NSLog(@"");
+        DLog(@"");
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
@@ -331,7 +343,7 @@
 }
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"gAd: adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
+    DLog(@"gAd: adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
 
 }
 
