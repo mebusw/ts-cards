@@ -16,7 +16,11 @@
 #define btnCancel   0
 #define btnOK   1
 #define GAD_PUBLISHER_ID @"a14f791eb38987e"
-#define PRODUCT_ID  @"A1"
+#define PRODUCT_ID_FULL_VERSION  @"A1"
+#define kFullVersionUnlocked @"FullVersionUnlocked"
+#define btnUnlockFullVersion 0
+#define btnAppendAllCards 0
+#define btnClearAllCollections 1
 
 @interface MasterViewController () {
     UITextField *numberField;
@@ -40,6 +44,7 @@
     [super viewDidLoad];
     [self addNavButtons];
     [self addGAD];
+    [self restorePurchasedProducts];
 }
 
 
@@ -76,65 +81,80 @@
 
 
 - (void) actionButtonTapped:(id)sender {
-    UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Only Avaliable in Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Remove All Collections"), I18N(@"Add All Cards"), nil];
-    [actions showInView:self.view];
+    bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
+    
+    if (isFullVersionUnlocked) {
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Only Avaliable in Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Remove All Collections"), I18N(@"Add All Cards"), nil];
+        [actions showInView:self.view];
+    } else {
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:nil];
+        [actions showInView:self.view];
+    }
+
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    DLog(@"%d", buttonIndex);
+    DLog(@"buttonIndex = %d", buttonIndex);
+    bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
-    if ([SKPaymentQueue canMakePayments]) {
-        //[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
-        //[self RequestProductData];
-        DLog(@"Allow IAP");
-        [self requestProductData];
-    }
-    else
-    {
-        DLog(@"Unallow IAP");
-        UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:@"You can‘t purchase in app store（Himi说你没允许应用程序内购买）"
-                                                           delegate:nil cancelButtonTitle:NSLocalizedString(@"Close（关闭）",nil) otherButtonTitles:nil];    
-        
-        [alerView show];
-        
+    if (isFullVersionUnlocked) {
+        switch (buttonIndex) {
+            case btnAppendAllCards:
+                [self appendAllCards];
+                break;
+            case btnClearAllCollections:
+                [self clearAllCollections];
+                break;
+            default:
+                break;
+        }
+    } else {
+        if (btnUnlockFullVersion == buttonIndex) {
+            if ([SKPaymentQueue canMakePayments]) {
+                [self requestProductData];
+            }
+        } else {
+            DLog(@"Unallow IAP");
+            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"You disabled to purchase in app store") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
+            [alerView show];
+        }
     }
     
 }
-
 
 
 #pragma mark - In-App Purchase
-
-- (void) requestProductData
-{
-    DLog(@"-->");
+- (void) restorePurchasedProducts {
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+    
+- (void) requestProductData {
     SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:
-                                 [NSSet setWithObjects:@"A1", @"A2", nil]];
+                                 [NSSet setWithObjects:PRODUCT_ID_FULL_VERSION, nil]];
     request.delegate = (id)self;
     [request start];
 }
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
-{
-    NSArray *myProducts = response.products;
-    DLog(@"p count=%d", [myProducts count]);
-    DLog(@"invalid p: %@", response.invalidProductIdentifiers);
-    // Populate your UI from the products list.
-    // Save a reference to the products list.
-    
 
-    // populate UI
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    NSArray *myProducts = response.products;
+    /*
+    DLog(@"product count=%d", [myProducts count]);
+    DLog(@"invalid products: %@", response.invalidProductIdentifiers);
     for(SKProduct *product in myProducts){
         DLog(@"product info");
-        DLog(@"SKProduct 描述信息%@", [product description]);
-        DLog(@"产品标题 %@" , product.localizedTitle);
-        DLog(@"产品描述信息: %@" , product.localizedDescription);
-        DLog(@"价格: %@" , product.price);
-        DLog(@"Product id: %@" , product.productIdentifier);
+        DLog(@"desc= %@", [product description]);
+        DLog(@"title= %@" , product.localizedTitle);
+        DLog(@"desc of error= %@" , product.localizedDescription);
+        DLog(@"price= %@" , product.price);
+        DLog(@"Product id= %@" , product.productIdentifier);
     }
+    */
     
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:(id)self];
+    // Populate your UI from the products list.
+    // Save a reference to the products list.
+ 
     
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:(id)self];  
     @try {
         SKProduct *selectedProduct = [myProducts objectAtIndex:0];
         SKPayment *payment = [SKPayment paymentWithProduct:selectedProduct];
@@ -143,10 +163,7 @@
 
     }
     @catch (NSException *exception) {
-        DLog(@"exception");
-    }
-    @finally {
-        ;
+        DLog(@"exception when add payment %@", [exception reason]);
     }
 }
 
@@ -159,7 +176,6 @@
         switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchasing:
-                DLog(@"buying");
                 break;
             case SKPaymentTransactionStatePurchased:
                 [self completeTransaction:transaction];
@@ -197,17 +213,18 @@
 {
     if (transaction.error.code != SKErrorPaymentCancelled) {
         // Optionally, display an error here.
-        DLog(@"");
+        UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"Failed to make transaction") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
+        [alerView show];
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
 -(void) recordTransaction: (SKPaymentTransaction *)transaction {
-    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kFullVersionUnlocked];
 }
 
 -(void) provideContent:(NSString*) productId {
-    
+    //
 }
 
 #pragma mark - Table View
@@ -294,6 +311,14 @@
         
     }
     
+}
+
+-(void) clearAllCollections {
+    DLog(@"");
+}
+
+-(void) appendAllCards {
+    DLog(@"");    
 }
 
 #pragma mark - Segue
