@@ -68,4 +68,16 @@
     return result;
 }
 
+-(NSArray*)selectAll {
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    FMResultSet *rs = [db executeQuery:@"select * from card"];
+    
+    while ([rs next]) {
+        [result addObject:[self parseCards:rs]];
+    }
+    [rs close];
+    return result;
+}
+
 @end

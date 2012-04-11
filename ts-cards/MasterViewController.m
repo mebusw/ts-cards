@@ -44,7 +44,8 @@
     [super viewDidLoad];
     [self addNavButtons];
     [self addGAD];
-    [self restorePurchasedProducts];
+    // is it not proper to automatic restore, because it may ask user input password even for a new install
+    //[self restorePurchasedProducts];
 }
 
 
@@ -65,7 +66,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     gAdBanner.delegate = nil;
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,13 +85,13 @@
     bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
     if (isFullVersionUnlocked) {
-        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Only Avaliable in Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Remove All Collections"), I18N(@"Add All Cards"), nil];
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Add All Cards"), I18N(@"Remove All Collections"), nil];
         [actions showInView:self.view];
     } else {
         UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:nil];
         [actions showInView:self.view];
     }
-
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -127,7 +128,7 @@
 - (void) restorePurchasedProducts {
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
-    
+
 - (void) requestProductData {
     SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:
                                  [NSSet setWithObjects:PRODUCT_ID_FULL_VERSION, nil]];
@@ -138,21 +139,21 @@
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     NSArray *myProducts = response.products;
     /*
-    DLog(@"product count=%d", [myProducts count]);
-    DLog(@"invalid products: %@", response.invalidProductIdentifiers);
-    for(SKProduct *product in myProducts){
-        DLog(@"product info");
-        DLog(@"desc= %@", [product description]);
-        DLog(@"title= %@" , product.localizedTitle);
-        DLog(@"desc of error= %@" , product.localizedDescription);
-        DLog(@"price= %@" , product.price);
-        DLog(@"Product id= %@" , product.productIdentifier);
-    }
-    */
+     DLog(@"product count=%d", [myProducts count]);
+     DLog(@"invalid products: %@", response.invalidProductIdentifiers);
+     for(SKProduct *product in myProducts){
+     DLog(@"product info");
+     DLog(@"desc= %@", [product description]);
+     DLog(@"title= %@" , product.localizedTitle);
+     DLog(@"desc of error= %@" , product.localizedDescription);
+     DLog(@"price= %@" , product.price);
+     DLog(@"Product id= %@" , product.productIdentifier);
+     }
+     */
     
     // Populate your UI from the products list.
     // Save a reference to the products list.
- 
+    
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:(id)self];  
     @try {
@@ -160,7 +161,7 @@
         SKPayment *payment = [SKPayment paymentWithProduct:selectedProduct];
         //payment.quantity = 1;
         [[SKPaymentQueue defaultQueue] addPayment:payment];
-
+        
     }
     @catch (NSException *exception) {
         DLog(@"exception when add payment %@", [exception reason]);
@@ -173,8 +174,7 @@
     for (SKPaymentTransaction *transaction in transactions)
     {
         DLog(@"%d", transaction.transactionState);
-        switch (transaction.transactionState)
-        {
+        switch (transaction.transactionState) {
             case SKPaymentTransactionStatePurchasing:
                 break;
             case SKPaymentTransactionStatePurchased:
@@ -213,6 +213,7 @@
 {
     if (transaction.error.code != SKErrorPaymentCancelled) {
         // Optionally, display an error here.
+        ELog(@"Failed to make transaction: %@", transaction.error.localizedDescription);
         UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"Failed to make transaction") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
         [alerView show];
     }
@@ -264,7 +265,7 @@
     
     cell.textLabel.text = card.title;
     cell.detailTextLabel.text = card.number;
-
+    
     return cell;
 }
 
@@ -289,7 +290,7 @@
         TSCard *card = [_searchResults objectAtIndex:[indexPath row]];
         
         [self insertNewCard:card];
-
+        
         [self.searchDisplayController setActive:NO animated:YES];
     }
 }
@@ -307,18 +308,24 @@
     @catch (NSException *exception) {
         DLog(@"%@", [exception reason]);
     }
-    @finally {
-        
-    }
-    
+   
 }
 
 -(void) clearAllCollections {
-    DLog(@"");
+    [_objects removeAllObjects];
+    [self.tableView reloadData];
 }
 
 -(void) appendAllCards {
-    DLog(@"");    
+
+    @try {
+        NSArray *allCards = [[[TSCardDao alloc] init] selectAll];
+        _objects = [NSMutableArray arrayWithArray:allCards];
+        [self.tableView reloadData];
+    }
+    @catch (NSException *exception) {
+        DLog(@"%@", [exception reason]);
+    } 
 }
 
 #pragma mark - Segue
@@ -353,7 +360,7 @@
     [self.navigationController.view addSubview:gAdBanner];
     
     GADRequest *request = [GADRequest request];
-
+    
     /* Make the request for a test ad when running on simulator */
     request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     
@@ -373,7 +380,7 @@
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
     DLog(@"gAd: adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
-
+    
 }
 
 

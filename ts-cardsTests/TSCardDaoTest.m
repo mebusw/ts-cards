@@ -57,4 +57,13 @@
   
 }
 
+-(void) testSelectAll {
+    
+    TSCardDao *dao = [[TSCardDao alloc] init];
+    NSArray *a = [dao selectAll];
+    
+    STAssertEquals(110U, [a count], nil);
+    
+}
+
 @end

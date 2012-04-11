@@ -20,6 +20,8 @@
 #   define DLog(...) {}
 #endif
 
+#define ELog(fmt, ...) NSLog((@"%s<Ln%d> " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
 #define STR(format...)     [NSString stringWithFormat:format]
 
 #define I18N(localizedStr, ...)   [NSString stringWithFormat:NSLocalizedString(localizedStr, nil), ##__VA_ARGS__]         
