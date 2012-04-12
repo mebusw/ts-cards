@@ -5,6 +5,7 @@
 //  Created by mebusw on 12-3-14.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
+#import <GameKit/GameKit.h>
 
 #import "AppDelegate.h"
 #import "TSCardDao.h"
@@ -64,7 +65,19 @@
     DLog(@"initDatabase=%d", dbInitResult);
     dbInitResult |= YES;
     
+    [self prepareForGameCenter];
+            
     return YES;
+}
+
+-(void) prepareForGameCenter {
+
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
+        // If there is an error, do not assume local player is not authenticated. 
+        ELog(@"isAuthenticated %d | %@", localPlayer.isAuthenticated, [error localizedDescription]);
+    }];
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 #import "GADBannerView.h"
+#import <GameKit/GameKit.h>
 
 #import "MasterViewController.h"
 
@@ -18,6 +19,7 @@
 #define GAD_PUBLISHER_ID @"a14f791eb38987e"
 #define PRODUCT_ID_FULL_VERSION  @"A1"
 #define kFullVersionUnlocked @"FullVersionUnlocked"
+#define kAchievement_ReadyForBattle @"Achievement001"
 #define btnUnlockFullVersion 0
 #define btnAppendAllCards 0
 #define btnClearAllCollections 1
@@ -25,6 +27,7 @@
 @interface MasterViewController () {
     UITextField *numberField;
     GADBannerView *gAdBanner;
+    double achievementsPercentageComplete;
 }
 
 
@@ -55,9 +58,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
+
     UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
     self.navigationItem.rightBarButtonItem = actionButton;
-    
 }
 
 
@@ -207,11 +210,13 @@
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
+
 - (void) restoreTransaction: (SKPaymentTransaction *)transaction
 {
     [self recordTransaction: transaction];
     [self provideContent: transaction.originalTransaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+
 }
 
 - (void) failedTransaction: (SKPaymentTransaction *)transaction
@@ -298,8 +303,8 @@
         TSCard *card = [_searchResults objectAtIndex:[indexPath row]];
         
         [self insertNewCard:card];
-        
         [self.searchDisplayController setActive:NO animated:YES];
+        [self reportAchievement];
     }
 }
 
@@ -390,6 +395,34 @@
     DLog(@"gAd: adView:didFailToReceiveAdWithError:%@", [error localizedDescription]);
     
 }
+
+#pragma mark - game center
+ 
+- (IBAction)reportAchievement {
+    GKAchievement * achievement = [[GKAchievement alloc] initWithIdentifier:kAchievement_ReadyForBattle];
+    achievementsPercentageComplete += 25;
+    achievement.showsCompletionBanner = YES;
+    [achievement setPercentComplete: achievementsPercentageComplete];
+
+    [achievement reportAchievementWithCompletionHandler: ^(NSError *error){
+        if (error) {
+            // Store achievement to be submitted at a later time. 
+            ELog(@"error %@", [error localizedDescription]);
+            //[self storeAchievement:achievement];
+        } else {
+            DLog(@"success and may re-submit others");
+            /*
+            if ([storedAchievements objectForKey:achievement.identifier]) {
+            // Achievement is reported, remove from store. 
+                [storedAchievements removeObjectForKey:achievement.identifier];
+            } 
+            [self resubmitStoredAchievements];
+            */
+        }
+    }];
+    
+}
+
 
 
 
