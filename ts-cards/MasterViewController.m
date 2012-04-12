@@ -47,8 +47,8 @@
     [super viewDidLoad];
     [self addNavButtons];
     [self addGAD];
-    // is it not proper to automatic restore, because it will ask user input password even for a new install
-    [self restorePurchasedProducts];
+    // it is not proper to automatic restore, because it will ask user input password even for a new install
+    //[self restorePurchasedProducts];
 }
 
 
