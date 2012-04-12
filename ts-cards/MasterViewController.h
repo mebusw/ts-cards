@@ -10,7 +10,7 @@
 #import <StoreKit/StoreKit.h>
 
 #import "TSCard.h"
-@interface MasterViewController : UITableViewController<UIActionSheetDelegate> {
+@interface MasterViewController : UITableViewController<UIActionSheetDelegate, SKPaymentTransactionObserver> {
     
 }
 

@@ -44,8 +44,8 @@
     [super viewDidLoad];
     [self addNavButtons];
     [self addGAD];
-    // is it not proper to automatic restore, because it may ask user input password even for a new install
-    //[self restorePurchasedProducts];
+    // is it not proper to automatic restore, because it will ask user input password even for a new install
+    [self restorePurchasedProducts];
 }
 
 
@@ -85,10 +85,10 @@
     bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
     if (isFullVersionUnlocked) {
-        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Add All Cards"), I18N(@"Remove All Collections"), nil];
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"You've unlocked Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Add All Cards"), I18N(@"Remove All Collections"), nil];
         [actions showInView:self.view];
     } else {
-        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:nil];
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Unlock Full Version for more functions") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:nil];
         [actions showInView:self.view];
     }
     
@@ -115,7 +115,6 @@
                 [self requestProductData];
             }
         } else {
-            DLog(@"Unallow IAP");
             UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"You disabled to purchase in app store") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
             [alerView show];
         }
@@ -138,9 +137,10 @@
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     NSArray *myProducts = response.products;
-    /*
-     DLog(@"product count=%d", [myProducts count]);
-     DLog(@"invalid products: %@", response.invalidProductIdentifiers);
+    
+    DLog(@"product count=%d", [myProducts count]);
+    /*     DLog(@"invalid products: %@", response.invalidProductIdentifiers);
+     
      for(SKProduct *product in myProducts){
      DLog(@"product info");
      DLog(@"desc= %@", [product description]);
@@ -168,6 +168,13 @@
     }
 }
 
+-(void) request:(SKRequest*)request didFailWithError:(NSError *)error {
+    ELog(@"%@", error);
+}
+
+-(void) requestDidFinish:(SKRequest*)request {
+    //DLog(@"");
+}
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
@@ -197,8 +204,6 @@
     // Your application should implement these two methods.
     [self recordTransaction:transaction];
     [self provideContent:transaction.payment.productIdentifier];
-    
-    // Remove the transaction from the payment queue.
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
@@ -212,7 +217,6 @@
 - (void) failedTransaction: (SKPaymentTransaction *)transaction
 {
     if (transaction.error.code != SKErrorPaymentCancelled) {
-        // Optionally, display an error here.
         ELog(@"Failed to make transaction: %@", transaction.error.localizedDescription);
         UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"Failed to make transaction") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
         [alerView show];
@@ -225,7 +229,11 @@
 }
 
 -(void) provideContent:(NSString*) productId {
-    //
+    DLog(@"%@", productId);
+}
+
+-(void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue*)queue {
+    DLog(@"");
 }
 
 #pragma mark - Table View
