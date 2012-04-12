@@ -116,10 +116,10 @@
         if (btnUnlockFullVersion == buttonIndex) {
             if ([SKPaymentQueue canMakePayments]) {
                 [self requestProductData];
+            } else {
+                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"You disabled to purchase in app store") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
+                [alerView show];
             }
-        } else {
-            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"You disabled to purchase in app store") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
-            [alerView show];
         }
     }
     
@@ -172,7 +172,7 @@
 }
 
 -(void) request:(SKRequest*)request didFailWithError:(NSError *)error {
-    ELog(@"%@", error);
+    ELog(@"%@", [error localizedDescription]);
 }
 
 -(void) requestDidFinish:(SKRequest*)request {
