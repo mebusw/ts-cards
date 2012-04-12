@@ -20,6 +20,7 @@
 #define PRODUCT_ID_FULL_VERSION  @"A1"
 #define kFullVersionUnlocked @"FullVersionUnlocked"
 #define kAchievement_ReadyForBattle @"Achievement001"
+#define kLeaderBoard_QueryTimes @"Leaderboard001"
 #define btnUnlockFullVersion 0
 #define btnAppendAllCards 0
 #define btnClearAllCollections 1
@@ -398,7 +399,7 @@
 
 #pragma mark - game center
  
-- (IBAction)reportAchievement {
+- (void)reportAchievement {
     GKAchievement * achievement = [[GKAchievement alloc] initWithIdentifier:kAchievement_ReadyForBattle];
     achievementsPercentageComplete += 25;
     achievement.showsCompletionBanner = YES;
@@ -423,7 +424,18 @@
     
 }
 
-
+- (void)reportScore {
+    GKScore * score = [[GKScore alloc] initWithCategory:kLeaderBoard_QueryTimes];
+    score.value = 20;
+    [score reportScoreWithCompletionHandler: ^(NSError *error){
+        if (error) {
+            ELog(@"error %@", [error localizedDescription]);
+        } else {
+            DLog(@"success and may re-submit others");
+        }
+    }];
+    
+}
 
 
 
