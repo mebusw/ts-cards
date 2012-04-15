@@ -6,6 +6,7 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
+#import "constants.h"
 #import "MasterVCTest.h"
 #import "OCMock/OCMock.h"
 #import "MasterViewController.h"
@@ -13,13 +14,15 @@
 #import "TSCard.h"
 #import "TSCardDao.h"
 
-@implementation MasterVCTest
+@implementation MasterVCTest {
+    MasterViewController *controller;
+}
 
 - (void)setUp
 {
     [super setUp];
     
-    // Set-up code here.
+     controller = [[MasterViewController alloc] init];
 }
 
 - (void)tearDown
@@ -30,7 +33,6 @@
 }
 
 - (void)test_commitEditingStyle_forRowAtIndexPath {
-    MasterViewController *controller = [[MasterViewController alloc] init];
     NSIndexPath *dummyIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
     id tableViewMock = [OCMockObject mockForClass:[UITableView class]];
     [[tableViewMock expect] deleteRowsAtIndexPaths:[NSArray arrayWithObject:dummyIndexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -42,7 +44,6 @@
 
 
 - (void)test_cellForRowAtIndexPath {
-    MasterViewController *controller = [[MasterViewController alloc] init];
     NSIndexPath *dummyIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
     id tableViewMock = [OCMockObject mockForClass:[UITableView class]];
     [[tableViewMock expect] dequeueReusableCellWithIdentifier:@"Cell"];
@@ -53,7 +54,6 @@
 }
 
 - (void) test_insertNewCard {
-    MasterViewController *controller = [[MasterViewController alloc] init];
     NSString *number = @"30";
     id tableViewMock = [OCMockObject partialMockForObject:controller.tableView];
     [[tableViewMock expect] insertRowsAtIndexPaths:[OCMArg any] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -69,7 +69,6 @@
 }
 
 - (void) test_prepareForSegue {
-    MasterViewController *controller = [[MasterViewController alloc] init];
     TSCard *card = [[TSCard alloc] init];
     controller._objects = [[NSMutableArray alloc] init];
     [controller._objects addObject:card];
@@ -89,6 +88,18 @@
    
 }
 
+-(void) test_actionButton_firstButtonWhenPurchased {
+    id userDefaultsMock = [OCMockObject partialMockForObject:[NSUserDefaults standardUserDefaults]];
+    BOOL isFullVersionUnlocked = YES;
+    [[[userDefaultsMock expect] andReturnValue:OCMOCK_VALUE(isFullVersionUnlocked)] boolForKey:kFullVersionUnlocked]; 
+    id controllerMock = [OCMockObject partialMockForObject:controller];
+    [[controllerMock stub] appendAllCards];
+    
+    [controller actionSheet:[[UIActionSheet alloc] init] clickedButtonAtIndex:0];
+    
+    [userDefaultsMock verify];
+    [controllerMock verify];
+}
 
 
 @end

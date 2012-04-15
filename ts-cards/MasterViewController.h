@@ -18,5 +18,8 @@
 @property (nonatomic, strong) NSArray *_searchResults;
 
 -(void) insertNewCard:(TSCard*)card;
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
+
+-(void) appendAllCards;
 @end

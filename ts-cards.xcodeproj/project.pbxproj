@@ -94,6 +94,7 @@
 		8F2B57621510F0FE00BE3F48 /* TSCardDaoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCardDaoTest.h; sourceTree = "<group>"; };
 		8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDaoTest.m; sourceTree = "<group>"; };
 		8F3141411518E33C000EB574 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		8F3BEE0B153A3EA9006D2780 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		8F75082115346FA6008196A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8F7B7CC0151E22D7009CE3BB /* ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ICON.png; sourceTree = "<group>"; };
 		8F7C5805152958B4008BA804 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
@@ -215,6 +216,7 @@
 				8F2B56FC1510DF3000BE3F48 /* Localizable.strings */,
 				8F2B56FF1510DF3000BE3F48 /* main.m */,
 				8F2B57011510DF3000BE3F48 /* ts-cards-Prefix.pch */,
+				8F3BEE0B153A3EA9006D2780 /* constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

@@ -8,22 +8,13 @@
 #import "GADBannerView.h"
 #import <GameKit/GameKit.h>
 
+#import "constants.h"
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
 #import "TSCard.h"
 #import "TSCardDao.h"
 
-#define btnCancel   0
-#define btnOK   1
-#define GAD_PUBLISHER_ID @"a14f791eb38987e"
-#define PRODUCT_ID_FULL_VERSION  @"A1"
-#define kFullVersionUnlocked @"FullVersionUnlocked"
-#define kAchievement_ReadyForBattle @"Achievement001"
-#define kLeaderBoard_QueryTimes @"Leaderboard001"
-#define btnUnlockFullVersion 0
-#define btnAppendAllCards 0
-#define btnClearAllCollections 1
+
 
 @interface MasterViewController () {
     UITextField *numberField;
