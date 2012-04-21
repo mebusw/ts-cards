@@ -6,7 +6,6 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 #import "GADBannerView.h"
-#import <GameKit/GameKit.h>
 
 #import "constants.h"
 #import "MasterViewController.h"
@@ -19,7 +18,6 @@
 @interface MasterViewController () {
     UITextField *numberField;
     GADBannerView *gAdBanner;
-    double achievementsPercentageComplete;
 }
 
 
@@ -296,7 +294,7 @@
         
         [self insertNewCard:card];
         [self.searchDisplayController setActive:NO animated:YES];
-        [self reportAchievement];
+
     }
 }
 
@@ -388,45 +386,7 @@
     
 }
 
-#pragma mark - game center
- 
-- (void)reportAchievement {
-    GKAchievement * achievement = [[GKAchievement alloc] initWithIdentifier:kAchievement_ReadyForBattle];
-    achievementsPercentageComplete += 25;
-    achievement.showsCompletionBanner = YES;
-    [achievement setPercentComplete: achievementsPercentageComplete];
 
-    [achievement reportAchievementWithCompletionHandler: ^(NSError *error){
-        if (error) {
-            // Store achievement to be submitted at a later time. 
-            ELog(@"error %@", [error localizedDescription]);
-            //[self storeAchievement:achievement];
-        } else {
-            DLog(@"success and may re-submit others");
-            /*
-            if ([storedAchievements objectForKey:achievement.identifier]) {
-            // Achievement is reported, remove from store. 
-                [storedAchievements removeObjectForKey:achievement.identifier];
-            } 
-            [self resubmitStoredAchievements];
-            */
-        }
-    }];
-    
-}
-
-- (void)reportScore {
-    GKScore * score = [[GKScore alloc] initWithCategory:kLeaderBoard_QueryTimes];
-    score.value = 20;
-    [score reportScoreWithCompletionHandler: ^(NSError *error){
-        if (error) {
-            ELog(@"error %@", [error localizedDescription]);
-        } else {
-            DLog(@"success and may re-submit others");
-        }
-    }];
-    
-}
 
 
 
