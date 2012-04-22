@@ -18,6 +18,7 @@
 @interface MasterViewController () {
     UITextField *numberField;
     GADBannerView *gAdBanner;
+    UIActivityIndicatorView *_indicator;
 }
 
 
@@ -37,11 +38,18 @@
     [super viewDidLoad];
     [self addNavButtons];
     [self addGAD];
+    [self addIndicator];
+
     // it is not proper to automatic restore, because it will ask user input password even for a new install
     //[self restorePurchasedProducts];
 }
 
-
+-(void) addIndicator {
+    _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _indicator.frame = CGRectMake(120.0f, 120.0f, 57.0f, 57.0f);
+    _indicator.color = [UIColor blueColor];
+    [self.view addSubview:_indicator];   
+}
 
 - (void)addNavButtons
 {
@@ -125,6 +133,7 @@
     SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:
                                  [NSSet setWithObjects:PRODUCT_ID_FULL_VERSION, nil]];
     request.delegate = (id)self;
+    [_indicator startAnimating];
     [request start];
 }
 
@@ -132,6 +141,8 @@
     NSArray *myProducts = response.products;
     
     DLog(@"product count=%d", [myProducts count]);
+    [_indicator stopAnimating];
+    
     /*     DLog(@"invalid products: %@", response.invalidProductIdentifiers);
      
      for(SKProduct *product in myProducts){
@@ -163,10 +174,13 @@
 
 -(void) request:(SKRequest*)request didFailWithError:(NSError *)error {
     ELog(@"%@", [error localizedDescription]);
+    [_indicator stopAnimating];
+    UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"Can't connect to iTunes") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
+    [alerView show];
 }
 
 -(void) requestDidFinish:(SKRequest*)request {
-    //DLog(@"");
+    DLog(@"");
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
