@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "TSCard.h"
 #import <iAd/iAd.h>
+#import "constants.h"
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -61,11 +62,14 @@ ADBannerView *iAdBanner;
 }
 
 -(void) addAdView {
-    iAdBanner = [[ADBannerView alloc] initWithFrame:CGRectZero];
-    iAdBanner.delegate = (id)self;
-    CGSize size = self.view.frame.size;
-    iAdBanner.center = CGPointMake(size.width / 2, -30);
-    [self.view addSubview:iAdBanner];
+    bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
+    if (!isFullVersionUnlocked) {
+        iAdBanner = [[ADBannerView alloc] initWithFrame:CGRectZero];
+        iAdBanner.delegate = (id)self;
+        CGSize size = self.view.frame.size;
+        iAdBanner.center = CGPointMake(size.width / 2, -30);
+        [self.view addSubview:iAdBanner];
+    }
 }
 
 - (void)viewDidUnload
@@ -99,7 +103,7 @@ ADBannerView *iAdBanner;
 -(void) bannerViewDidLoadAd:(ADBannerView *)banner
 {
 	DLog(@"iAd: bannerViewDidLoadAd");
-	
+
     [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
     // banner is invisible now and moved out of the screen on 50 px
     [UIView setAnimationDuration:1.0];

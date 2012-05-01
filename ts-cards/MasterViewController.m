@@ -370,18 +370,21 @@
 #pragma mark - Google Ad
 
 -(void) addGAD {
-    gAdBanner = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
-    gAdBanner.adUnitID = GAD_PUBLISHER_ID;
-    gAdBanner.delegate = (id)self;
-    [gAdBanner setRootViewController:self.navigationController];
-    [self.navigationController.view addSubview:gAdBanner];
-    
-    GADRequest *request = [GADRequest request];
-    
-    /* Make the request for a test ad when running on simulator */
-    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
-    
-    [gAdBanner loadRequest:request];
+    bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
+    if (!isFullVersionUnlocked) {
+        gAdBanner = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height, GAD_SIZE_320x50.width, GAD_SIZE_320x50.height)];
+        gAdBanner.adUnitID = GAD_PUBLISHER_ID;
+        gAdBanner.delegate = (id)self;
+        [gAdBanner setRootViewController:self.navigationController];
+        [self.navigationController.view addSubview:gAdBanner];
+        
+        GADRequest *request = [GADRequest request];
+        
+        /* Make the request for a test ad when running on simulator */
+        request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
+        
+        [gAdBanner loadRequest:request];
+    }
 }
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
