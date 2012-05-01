@@ -39,6 +39,7 @@
 		8F80FBA31512F3CE00CCFB98 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F80FBA21512F3CE00CCFB98 /* libOCMock.a */; };
 		8F80FBC41513392600CCFB98 /* MasterVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC31513392600CCFB98 /* MasterVCTest.m */; };
 		8F80FBC7151339E300CCFB98 /* DetailVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F80FBC6151339E300CCFB98 /* DetailVCTest.m */; };
+		8FACB33C15501BFA00D8EBCA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FACB33B15501BFA00D8EBCA /* Default.png */; };
 		8FB6CC3E151A3708004AABFF /* ICON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6CC3D151A3708004AABFF /* ICON@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		8F80FBC31513392600CCFB98 /* MasterVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterVCTest.m; sourceTree = "<group>"; };
 		8F80FBC5151339E300CCFB98 /* DetailVCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVCTest.h; sourceTree = "<group>"; };
 		8F80FBC6151339E300CCFB98 /* DetailVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVCTest.m; sourceTree = "<group>"; };
+		8FACB33B15501BFA00D8EBCA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8FB6CC3D151A3708004AABFF /* ICON@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ICON@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 		8F2B56E41510DF3000BE3F48 = {
 			isa = PBXGroup;
 			children = (
+				8FACB33B15501BFA00D8EBCA /* Default.png */,
 				8F7B7CC0151E22D7009CE3BB /* ICON.png */,
 				8FB6CC3D151A3708004AABFF /* ICON@2x.png */,
 				8F2B56F91510DF3000BE3F48 /* ts-cards */,
@@ -364,6 +367,7 @@
 				8F2B574A1510E1D300BE3F48 /* ts.sqlite in Resources */,
 				8FB6CC3E151A3708004AABFF /* ICON@2x.png in Resources */,
 				8F7B7CC1151E22D7009CE3BB /* ICON.png in Resources */,
+				8FACB33C15501BFA00D8EBCA /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
