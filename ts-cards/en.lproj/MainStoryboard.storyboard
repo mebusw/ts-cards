@@ -146,7 +146,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Card Detail" id="26"/>
+                    <navigationItem key="navigationItem" title="Card Detail" id="26">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Cqu-EI-wGM">
+                            <connections>
+                                <segue destination="GrY-LD-KqO" kind="push" id="Gg7-JV-n84"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lblEvent" destination="Etx-Z3-8gm" id="xCy-5t-gur"/>
                         <outlet property="lblNumber" destination="Yz2-fK-CZE" id="9i3-0K-k71"/>
@@ -158,6 +164,30 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="902" y="64"/>
+        </scene>
+        <!--View Controller - Strategies-->
+        <scene sceneID="Dzw-Ao-kdU">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ytb-AP-SI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="GrY-LD-KqO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zfo-7e-3XE">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="(Only Avaliable in Full Version)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="H8k-Nk-kmR">
+                                <rect key="frame" x="44" y="339" width="233" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Strategies" id="dz6-2H-UhB"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1316" y="64"/>
         </scene>
     </scenes>
     <classes>
