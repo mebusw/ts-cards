@@ -15,10 +15,10 @@
 
 
 @property (strong, nonatomic) IBOutlet UILabel *lblAsia;
+@property (strong, nonatomic) IBOutlet UILabel *lblAfrica;
 @property (strong, nonatomic) IBOutlet UILabel *lblSEAsia;
 @property (strong, nonatomic) IBOutlet UILabel *lblMidEast;
-@property (strong, nonatomic) IBOutlet UILabel *lblWEurope;
-@property (strong, nonatomic) IBOutlet UILabel *lblEEurope;
+@property (strong, nonatomic) IBOutlet UILabel *lblEurope;
 @property (strong, nonatomic) IBOutlet UILabel *lblCAmerica;
 @property (strong, nonatomic) IBOutlet UILabel *lblSAmerica;
 @property (strong, nonatomic) IBOutlet UILabel *lblDefcon2;
