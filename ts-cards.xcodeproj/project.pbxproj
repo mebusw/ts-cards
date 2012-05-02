@@ -32,6 +32,7 @@
 		8F3141421518E33C000EB574 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3141411518E33C000EB574 /* iAd.framework */; };
 		8F75082215346FA6008196A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F75082115346FA6008196A5 /* StoreKit.framework */; };
 		8F7B7CC1151E22D7009CE3BB /* ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B7CC0151E22D7009CE3BB /* ICON.png */; };
+		8F7B859C1551642300F19141 /* StrategiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B859B1551642300F19141 /* StrategiesViewController.m */; };
 		8F7C580C152958B4008BA804 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7C580B152958B4008BA804 /* libGoogleAdMobAds.a */; };
 		8F7C5810152958E8008BA804 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7C580F152958E8008BA804 /* AudioToolbox.framework */; };
 		8F7C5812152958F6008BA804 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7C5811152958F6008BA804 /* MessageUI.framework */; };
@@ -97,6 +98,8 @@
 		8F3BEE0B153A3EA9006D2780 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		8F75082115346FA6008196A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8F7B7CC0151E22D7009CE3BB /* ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ICON.png; sourceTree = "<group>"; };
+		8F7B859A1551642300F19141 /* StrategiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrategiesViewController.h; path = ../StrategiesViewController.h; sourceTree = "<group>"; };
+		8F7B859B1551642300F19141 /* StrategiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StrategiesViewController.m; path = ../StrategiesViewController.m; sourceTree = "<group>"; };
 		8F7C5805152958B4008BA804 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
 		8F7C5806152958B4008BA804 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
 		8F7C5807152958B4008BA804 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				8F2B57091510DF3000BE3F48 /* MasterViewController.m */,
 				8F2B570B1510DF3000BE3F48 /* DetailViewController.h */,
 				8F2B570C1510DF3000BE3F48 /* DetailViewController.m */,
+				8F7B859A1551642300F19141 /* StrategiesViewController.h */,
+				8F7B859B1551642300F19141 /* StrategiesViewController.m */,
 				8F2B56FA1510DF3000BE3F48 /* Supporting Files */,
 			);
 			path = "ts-cards";
@@ -411,6 +416,7 @@
 				8F2B57501510E2D000BE3F48 /* TSCard.m in Sources */,
 				8F2B57551510E31600BE3F48 /* TSCardDao.m in Sources */,
 				8F2B57581510E70D00BE3F48 /* BaseDao.m in Sources */,
+				8F7B859C1551642300F19141 /* StrategiesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

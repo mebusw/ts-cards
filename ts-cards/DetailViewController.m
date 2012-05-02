@@ -85,6 +85,15 @@ ADBannerView *iAdBanner;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    DLog(@"");
+    if ([[segue identifier] isEqualToString:@"showStrategies"]) {
+        [[segue destinationViewController] setDetailItem:_detailItem];
+    }
+}
+
 #pragma mark - iAD Delegate Function
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
