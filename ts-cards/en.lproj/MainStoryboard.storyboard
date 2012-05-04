@@ -165,7 +165,7 @@
             </objects>
             <point key="canvasLocation" x="902" y="64"/>
         </scene>
-        <!--Strategies View Controller - Strategies-->
+        <!--Strategies View Controller - Strategy Hints-->
         <scene sceneID="Dzw-Ao-kdU">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ytb-AP-SI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -178,8 +178,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Strategies only avaliable in full version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="H8k-Nk-kmR">
-                                <rect key="frame" x="16" y="329" width="289" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Strategy hints only avaliable in full version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="H8k-Nk-kmR">
+                                <rect key="frame" x="2" y="329" width="317" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.58096108160000004" blue="0.31428671219999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -261,7 +261,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Strategies" id="dz6-2H-UhB"/>
+                    <navigationItem key="navigationItem" title="Strategy Hints" id="dz6-2H-UhB"/>
                     <connections>
                         <outlet property="lblAfrica" destination="gw3-55-JHI" id="15G-SG-aRA"/>
                         <outlet property="lblAsia" destination="YPS-6p-Jp0" id="xJU-1m-TJA"/>
@@ -282,37 +282,6 @@
     <resources>
         <image name="world.jpg" width="640" height="960"/>
     </resources>
-    <classes>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lblEvent" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblNumber" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblOps" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblPeriod" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblSide" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-        </class>
-        <class className="StrategiesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StrategiesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lblAfrica" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblAsia" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblCAmerica" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblDefcon2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblEurope" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblMidEast" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblReminder" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblSAmerica" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblSEAsia" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblVP" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

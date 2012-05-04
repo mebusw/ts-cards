@@ -165,7 +165,7 @@
             </objects>
             <point key="canvasLocation" x="902" y="64"/>
         </scene>
-        <!--Strategies View Controller - 策略-->
+        <!--Strategies View Controller - 策略提示-->
         <scene sceneID="Dzw-Ao-kdU">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ytb-AP-SI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -178,8 +178,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="策略只包含在完整版中" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="H8k-Nk-kmR">
-                                <rect key="frame" x="74" y="329" width="172" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="策略提示只包含在完整版中" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="H8k-Nk-kmR">
+                                <rect key="frame" x="58" y="329" width="204" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.58096108160000004" blue="0.31428671219999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -261,7 +261,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="策略" id="dz6-2H-UhB"/>
+                    <navigationItem key="navigationItem" title="策略提示" id="dz6-2H-UhB"/>
                     <connections>
                         <outlet property="lblAfrica" destination="gw3-55-JHI" id="15G-SG-aRA"/>
                         <outlet property="lblAsia" destination="YPS-6p-Jp0" id="xJU-1m-TJA"/>

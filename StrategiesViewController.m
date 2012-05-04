@@ -38,9 +38,9 @@
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
+    bool isFullVersion = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
-    if (self.detailItem) {
+    if (isFullVersion && self.detailItem) {
         TSCard *card = (TSCard*)(self.detailItem);
         DLog(@"%@ %@", card.asia, card.africa);
         [self setBGColor:[UIColor redColor] forField:card.asia onLabel:lblAsia];
@@ -53,8 +53,8 @@
         [self setBGColor:[UIColor redColor] forField:card.vp onLabel:lblVP];
         [self setBGColor:[UIColor redColor] forField:card.not_defcon2 onLabel:lblDefcon2];
     }
-
-    lblReminder.hidden = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
+    
+    lblReminder.hidden = isFullVersion;
 }
 
 -(void) setBGColor:(UIColor*)color forField:(NSString*)field onLabel:(UILabel*) label {
