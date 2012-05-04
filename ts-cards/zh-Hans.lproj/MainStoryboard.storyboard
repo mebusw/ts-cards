@@ -146,7 +146,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="卡牌详情" id="26"/>
+                    <navigationItem key="navigationItem" title="卡牌详情" id="26">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Cqu-EI-wGM">
+                            <connections>
+                                <segue destination="GrY-LD-KqO" kind="push" identifier="showStrategies" id="Gg7-JV-n84"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lblEvent" destination="Etx-Z3-8gm" id="xCy-5t-gur"/>
                         <outlet property="lblNumber" destination="Yz2-fK-CZE" id="9i3-0K-k71"/>
@@ -159,7 +165,123 @@
             </objects>
             <point key="canvasLocation" x="902" y="64"/>
         </scene>
+        <!--Strategies View Controller - 策略-->
+        <scene sceneID="Dzw-Ao-kdU">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ytb-AP-SI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="GrY-LD-KqO" customClass="StrategiesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zfo-7e-3XE">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="world.jpg" id="85x-m7-fK8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="策略只包含在完整版中" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="H8k-Nk-kmR">
+                                <rect key="frame" x="74" y="329" width="172" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.58096108160000004" blue="0.31428671219999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="亚洲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="YPS-6p-Jp0">
+                                <rect key="frame" x="235" y="149" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="东南亚" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IzA-LE-mKr">
+                                <rect key="frame" x="226" y="212" width="53" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="中东" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="hQ1-1W-VNg">
+                                <rect key="frame" x="181" y="179" width="37" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="欧洲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="s2e-G2-Xlp">
+                                <rect key="frame" x="133" y="140" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="中美洲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="SHf-HN-yar">
+                                <rect key="frame" x="20" y="161" width="57" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="南美洲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="lGs-Lx-5OZ">
+                                <rect key="frame" x="26" y="222" width="57" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="核危机2级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xcz-Bh-qGS">
+                                <rect key="frame" x="74" y="300" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="in5-DP-qXj">
+                                <rect key="frame" x="193" y="300" width="25" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="非洲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gw3-55-JHI">
+                                <rect key="frame" x="133" y="212" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="策略" id="dz6-2H-UhB"/>
+                    <connections>
+                        <outlet property="lblAfrica" destination="gw3-55-JHI" id="15G-SG-aRA"/>
+                        <outlet property="lblAsia" destination="YPS-6p-Jp0" id="xJU-1m-TJA"/>
+                        <outlet property="lblCAmerica" destination="SHf-HN-yar" id="ESk-w4-fqd"/>
+                        <outlet property="lblDefcon2" destination="xcz-Bh-qGS" id="w3e-BJ-3qR"/>
+                        <outlet property="lblEurope" destination="s2e-G2-Xlp" id="j7Z-gF-YcO"/>
+                        <outlet property="lblMidEast" destination="hQ1-1W-VNg" id="8Pn-Ij-uwL"/>
+                        <outlet property="lblReminder" destination="H8k-Nk-kmR" id="dzg-I7-Fv2"/>
+                        <outlet property="lblSAmerica" destination="lGs-Lx-5OZ" id="sYF-re-Blp"/>
+                        <outlet property="lblSEAsia" destination="IzA-LE-mKr" id="ceF-mo-y7H"/>
+                        <outlet property="lblVP" destination="in5-DP-qXj" id="LEJ-T4-4z0"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1316" y="64"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="world.jpg" width="640" height="960"/>
+    </resources>
     <classes>
         <class className="DetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
@@ -174,6 +296,21 @@
         </class>
         <class className="MasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+        </class>
+        <class className="StrategiesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StrategiesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblAfrica" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblAsia" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblCAmerica" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblDefcon2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblEurope" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblMidEast" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblReminder" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblSAmerica" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblSEAsia" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblVP" candidateClass="UILabel"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

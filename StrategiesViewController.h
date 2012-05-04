@@ -24,4 +24,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblDefcon2;
 @property (strong, nonatomic) IBOutlet UILabel *lblVP;
 
+
+@property (strong, nonatomic) IBOutlet UILabel *lblReminder;
+
+
 @end

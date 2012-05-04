@@ -8,6 +8,7 @@
 
 #import "StrategiesViewController.h"
 #import "TSCard.h"
+#import "constants.h"
 
 @interface StrategiesViewController ()
 
@@ -16,6 +17,7 @@
 @implementation StrategiesViewController
 @synthesize detailItem;
 @synthesize lblVP, lblAsia, lblSEAsia, lblDefcon2, lblMidEast, lblEurope, lblCAmerica, lblSAmerica, lblAfrica;
+@synthesize lblReminder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,16 +44,17 @@
         TSCard *card = (TSCard*)(self.detailItem);
         DLog(@"%@ %@", card.asia, card.africa);
         [self setBGColor:[UIColor redColor] forField:card.asia onLabel:lblAsia];
-        [self setBGColor:[UIColor yellowColor] forField:card.africa onLabel:lblAfrica];
-        [self setBGColor:[UIColor purpleColor] forField:card.europe onLabel:lblEurope];
-        [self setBGColor:[UIColor orangeColor] forField:card.se_asia onLabel:lblSEAsia];
-        [self setBGColor:[UIColor blueColor] forField:card.middle_east onLabel:lblMidEast];
-        [self setBGColor:[UIColor greenColor] forField:card.central_america onLabel:lblCAmerica];
-        [self setBGColor:[UIColor magentaColor] forField:card.south_america onLabel:lblSAmerica];
-        [self setBGColor:[UIColor brownColor] forField:card.vp onLabel:lblVP];
-        [self setBGColor:[UIColor cyanColor] forField:card.not_defcon2 onLabel:lblDefcon2];
-
+        [self setBGColor:[UIColor redColor] forField:card.africa onLabel:lblAfrica];
+        [self setBGColor:[UIColor redColor] forField:card.europe onLabel:lblEurope];
+        [self setBGColor:[UIColor redColor] forField:card.se_asia onLabel:lblSEAsia];
+        [self setBGColor:[UIColor redColor] forField:card.middle_east onLabel:lblMidEast];
+        [self setBGColor:[UIColor redColor] forField:card.central_america onLabel:lblCAmerica];
+        [self setBGColor:[UIColor redColor] forField:card.south_america onLabel:lblSAmerica];
+        [self setBGColor:[UIColor redColor] forField:card.vp onLabel:lblVP];
+        [self setBGColor:[UIColor redColor] forField:card.not_defcon2 onLabel:lblDefcon2];
     }
+
+    lblReminder.hidden = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
 }
 
 -(void) setBGColor:(UIColor*)color forField:(NSString*)field onLabel:(UILabel*) label {
