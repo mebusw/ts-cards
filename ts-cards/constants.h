@@ -18,6 +18,13 @@
 #define kLeaderBoard_QueryTimes @"Leaderboard001"
 #define btnUnlockFullVersion 0
 #define btnAppendAllCards 0
-#define btnClearAllCollections 1
+#define btnShareToWeibo 1
+#define btnClearAllCollections 2
+
+
+
+#define kWBSDKDemoAppKey    @"4243791455"
+#define kWBSDKDemoAppSecret @"f46c3932fee0bd4fafdf10fba27afbf5"
+
 
 #endif

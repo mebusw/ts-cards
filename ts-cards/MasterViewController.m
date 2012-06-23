@@ -86,10 +86,10 @@
     bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
     if (isFullVersionUnlocked) {
-        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"You've unlocked Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Add All Cards"), I18N(@"Remove All Collections"), nil];
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"You've unlocked Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Add All Cards"), I18N(@"Share to WeiBo"), I18N(@"Remove All Collections"), nil];
         [actions showInView:self.view];
     } else {
-        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Unlock Full Version for more functions") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:nil];
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Unlock Full Version for more functions") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:I18N(@"Share to WeiBo"), nil];
         [actions showInView:self.view];
     }
     
