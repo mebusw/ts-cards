@@ -428,90 +428,58 @@
 - (void)engineAlreadyLoggedIn:(WBEngine *)engine
 {
     //[indicatorView stopAnimating];
-    if ([engine isUserExclusive])
-    {
-        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
-                                                           message:@"请先登出！" 
-                                                          delegate:nil
-                                                 cancelButtonTitle:@"确定" 
-                                                 otherButtonTitles:nil];
-        [alertView show];
-    }
+    ELog(@"need to logout firstly. isUserExclusive=%d", [engine isUserExclusive]);
 }
 
-- (void)engineDidLogIn:(WBEngine *)engine
-{
+- (void)engineDidLogIn:(WBEngine *)engine {
     //[indicatorView stopAnimating];
-    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
-													   message:@"登录成功！" 
-													  delegate:self
-											 cancelButtonTitle:@"确定" 
-											 otherButtonTitles:nil];
-    [alertView setTag:0];
-	[alertView show];
+    DLog(@"login to weibo successfully.");
     
-    [engine loadRequestWithMethodName:@"statuses/home_timeline.json"
-                           httpMethod:@"GET"
-                               params:nil
-                         postDataType:kWBRequestPostDataTypeNone
-                     httpHeaderFields:nil];
+    /**send a sharing weibo*/
+    [engine sendWeiBoWithText:@"I'm using \"TS Card Lite\" for iPhone http://itunes.apple.com/us/app/ts-cards-lite/id512565583?ls=1&mt=8, Try it and you'll like it!" image:nil];
+    
+    /**fetch recent weibos*/
+//    [engine loadRequestWithMethodName:@"statuses/home_timeline.json"
+//                           httpMethod:@"GET"
+//                               params:nil
+//                         postDataType:kWBRequestPostDataTypeNone
+//                     httpHeaderFields:nil];
     
 }
 
 - (void)engine:(WBEngine *)engine didFailToLogInWithError:(NSError *)error
 {
     //[indicatorView stopAnimating];
-    NSLog(@"didFailToLogInWithError: %@", error);
-    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
-													   message:@"登录失败！" 
-													  delegate:nil
-											 cancelButtonTitle:@"确定" 
-											 otherButtonTitles:nil];
-	[alertView show];
+    ELog(@"didFailToLogInWithError: %@", error);
 }
 
-- (void)engineDidLogOut:(WBEngine *)engine
-{
-    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
-													   message:@"登出成功！" 
-													  delegate:self
-											 cancelButtonTitle:@"确定" 
-											 otherButtonTitles:nil];
-    [alertView setTag:1];
-	[alertView show];
+- (void)engineDidLogOut:(WBEngine *)engine {
+    DLog(@"Logout to weibo successfully.");
 }
 
-- (void)engineNotAuthorized:(WBEngine *)engine
-{
-    
+- (void)engineNotAuthorized:(WBEngine *)engine {
+    DLog(@"fail to login");    
 }
 
-- (void)engineAuthorizeExpired:(WBEngine *)engine
-{
-    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
-													   message:@"请重新登录！" 
-													  delegate:nil
-											 cancelButtonTitle:@"确定" 
-											 otherButtonTitles:nil];
-	[alertView show];
+- (void)engineAuthorizeExpired:(WBEngine *)engine {
+    DLog(@"Need to reLogin");
 }
 
 #pragma mark - WBEngineDelegate Methods
 
-- (void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result
-{
+- (void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result {
+    
+    DLog(@"%@", result);
     //[indicatorView stopAnimating];
     //NSLog(@"requestDidSucceedWithResult: %@", result);
     if ([result isKindOfClass:[NSDictionary class]])
     {
-        NSDictionary *dict = (NSDictionary *)result;
-        //[timeLine addObjectsFromArray:[dict objectForKey:@"statuses"]];
-        //[timeLineTableView reloadData];
-
-        for (NSDictionary *detail in [dict objectForKey:@"statuses"]) {
-            DLog(@"%@ Said: %@",  [[detail objectForKey:@"user"] objectForKey:@"screen_name"], [detail objectForKey:@"text"]);
-
-        }
+//        NSDictionary *dict = (NSDictionary *)result;
+//
+//        for (NSDictionary *detail in [dict objectForKey:@"statuses"]) {
+//            DLog(@"%@ Said: %@",  [[detail objectForKey:@"user"] objectForKey:@"screen_name"], [detail objectForKey:@"text"]);
+//
+//        }
 
     }
 }
@@ -519,7 +487,7 @@
 - (void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error
 {
     //[indicatorView stopAnimating];
-    NSLog(@"requestDidFailWithError: %@", error);
+    ELog(@"requestDidFailWithError: %@", error);
 }
 
 
