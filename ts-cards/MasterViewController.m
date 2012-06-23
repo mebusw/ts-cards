@@ -468,6 +468,14 @@
 #pragma mark - WBEngineDelegate Methods
 
 - (void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result {
+
+    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
+													   message:I18N(@"Shared To Friends") 
+													  delegate:nil
+											 cancelButtonTitle:I18N(@"OK")
+											 otherButtonTitles:nil];
+	[alertView show];
+
     
     DLog(@"%@", result);
     //[indicatorView stopAnimating];
