@@ -436,7 +436,7 @@
     DLog(@"login to weibo successfully.");
     
     /**send a sharing weibo*/
-    [engine sendWeiBoWithText:@"I'm using \"TS Card Lite\" for iPhone http://itunes.apple.com/us/app/ts-cards-lite/id512565583?ls=1&mt=8, Try it and you'll like it!" image:nil];
+    [engine sendWeiBoWithText:I18N(@"Text to social media") image:[UIImage imageNamed:@"ICON@2x.png"]];
     
     /**fetch recent weibos*/
 //    [engine loadRequestWithMethodName:@"statuses/home_timeline.json"
