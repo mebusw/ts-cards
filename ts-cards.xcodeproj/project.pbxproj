@@ -239,7 +239,6 @@
 		8F2B56E41510DF3000BE3F48 = {
 			isa = PBXGroup;
 			children = (
-				8FD8190115960B6E00172335 /* Security.framework */,
 				8FACB33B15501BFA00D8EBCA /* Default.png */,
 				8F7B7CC0151E22D7009CE3BB /* ICON.png */,
 				8FB6CC3D151A3708004AABFF /* ICON@2x.png */,
@@ -262,6 +261,7 @@
 		8F2B56F21510DF3000BE3F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FD8190115960B6E00172335 /* Security.framework */,
 				8F75082115346FA6008196A5 /* StoreKit.framework */,
 				8F7C5813152958FC008BA804 /* SystemConfiguration.framework */,
 				8F7C5811152958F6008BA804 /* MessageUI.framework */,
