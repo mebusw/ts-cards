@@ -18,7 +18,7 @@
 #define kLeaderBoard_QueryTimes @"Leaderboard001"
 #define btnUnlockFullVersion 0
 #define btnAppendAllCards 0
-#define btnShareToWeibo 1
+#define btnShareToWeiBo 1
 #define btnClearAllCollections 2
 
 

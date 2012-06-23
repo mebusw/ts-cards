@@ -6,6 +6,10 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 #import "GADBannerView.h"
+#import "SinaWeiBoSDK/WBEngine.h"
+#import "SinaWeiBoSDK/WBSendView.h"
+#import "SinaWeiBoSDK/WBLogInAlertView.h"
+
 
 #import "constants.h"
 #import "MasterViewController.h"
@@ -19,6 +23,7 @@
     UITextField *numberField;
     GADBannerView *gAdBanner;
     UIActivityIndicatorView *_indicator;
+    WBEngine *_weiBoEngine;
 }
 
 
@@ -39,7 +44,7 @@
     [self addNavButtons];
     [self addGAD];
     [self addIndicator];
-
+    [self initWeiBoEngine];
     // it is not proper to automatic restore, because it will ask user input password even for a new install
     //[self restorePurchasedProducts];
 }
@@ -51,8 +56,7 @@
     [self.view addSubview:_indicator];   
 }
 
-- (void)addNavButtons
-{
+- (void)addNavButtons {
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
@@ -61,6 +65,14 @@
     self.navigationItem.rightBarButtonItem = actionButton;
 }
 
+-(void)initWeiBoEngine {
+    WBEngine *engine = [[WBEngine alloc] initWithAppKey:kWBSDKDemoAppKey appSecret:kWBSDKDemoAppSecret];
+    [engine setRootViewController:self];
+    [engine setDelegate:(id)self];
+    [engine setRedirectURI:@"http://"];
+    [engine setIsUserExclusive:NO];
+    _weiBoEngine = engine;
+}
 
 - (void)viewDidUnload
 {
@@ -99,28 +111,33 @@
     DLog(@"buttonIndex = %d", buttonIndex);
     bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
-    if (isFullVersionUnlocked) {
-        switch (buttonIndex) {
-            case btnAppendAllCards:
-                [self appendAllCards];
-                break;
-            case btnClearAllCollections:
-                [self clearAllCollections];
-                break;
-            default:
-                break;
-        }
-    } else {
-        if (btnUnlockFullVersion == buttonIndex) {
-            if ([SKPaymentQueue canMakePayments]) {
-                [self requestProductData];
-            } else {
-                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"You disabled to purchase in app store") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
-                [alerView show];
-            }
-        }
+    if (btnShareToWeiBo == buttonIndex) {
+        [_weiBoEngine logIn];
+        return;
     }
     
+    if (!isFullVersionUnlocked && btnUnlockFullVersion == buttonIndex) {
+        if ([SKPaymentQueue canMakePayments]) {
+            [self requestProductData];
+        } else {
+            UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"You disabled to purchase in app store") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
+            [alerView show];
+        }
+        return;
+    }
+    
+
+    switch (buttonIndex) {
+        case btnAppendAllCards:
+            [self appendAllCards];
+            break;
+        case btnClearAllCollections:
+            [self clearAllCollections];
+            break;
+        default:
+            break;
+    }
+    return;
 }
 
 
@@ -404,7 +421,106 @@
 }
 
 
+#pragma mark - WBEngineDelegate Methods
 
+#pragma mark Authorize
+
+- (void)engineAlreadyLoggedIn:(WBEngine *)engine
+{
+    //[indicatorView stopAnimating];
+    if ([engine isUserExclusive])
+    {
+        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
+                                                           message:@"请先登出！" 
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"确定" 
+                                                 otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+- (void)engineDidLogIn:(WBEngine *)engine
+{
+    //[indicatorView stopAnimating];
+    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
+													   message:@"登录成功！" 
+													  delegate:self
+											 cancelButtonTitle:@"确定" 
+											 otherButtonTitles:nil];
+    [alertView setTag:0];
+	[alertView show];
+    
+    [engine loadRequestWithMethodName:@"statuses/home_timeline.json"
+                           httpMethod:@"GET"
+                               params:nil
+                         postDataType:kWBRequestPostDataTypeNone
+                     httpHeaderFields:nil];
+    
+}
+
+- (void)engine:(WBEngine *)engine didFailToLogInWithError:(NSError *)error
+{
+    //[indicatorView stopAnimating];
+    NSLog(@"didFailToLogInWithError: %@", error);
+    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
+													   message:@"登录失败！" 
+													  delegate:nil
+											 cancelButtonTitle:@"确定" 
+											 otherButtonTitles:nil];
+	[alertView show];
+}
+
+- (void)engineDidLogOut:(WBEngine *)engine
+{
+    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
+													   message:@"登出成功！" 
+													  delegate:self
+											 cancelButtonTitle:@"确定" 
+											 otherButtonTitles:nil];
+    [alertView setTag:1];
+	[alertView show];
+}
+
+- (void)engineNotAuthorized:(WBEngine *)engine
+{
+    
+}
+
+- (void)engineAuthorizeExpired:(WBEngine *)engine
+{
+    UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
+													   message:@"请重新登录！" 
+													  delegate:nil
+											 cancelButtonTitle:@"确定" 
+											 otherButtonTitles:nil];
+	[alertView show];
+}
+
+#pragma mark - WBEngineDelegate Methods
+
+- (void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result
+{
+    //[indicatorView stopAnimating];
+    //NSLog(@"requestDidSucceedWithResult: %@", result);
+    if ([result isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary *dict = (NSDictionary *)result;
+        //[timeLine addObjectsFromArray:[dict objectForKey:@"statuses"]];
+        //[timeLineTableView reloadData];
+
+        for (NSDictionary *detail in [dict objectForKey:@"statuses"]) {
+            DLog(@"%@ Said: %@",  [[detail objectForKey:@"user"] objectForKey:@"screen_name"], [detail objectForKey:@"text"]);
+
+        }
+
+    }
+}
+
+- (void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error
+{
+    //[indicatorView stopAnimating];
+    NSLog(@"requestDidFailWithError: %@", error);
+}
 
 
 @end
