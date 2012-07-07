@@ -38,9 +38,9 @@
 
 - (void)configureView
 {
-    bool isFullVersion = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
+    //bool isFullVersion = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
-    if (isFullVersion && self.detailItem) {
+    if (self.detailItem) {
         TSCard *card = (TSCard*)(self.detailItem);
         DLog(@"%@ %@", card.asia, card.africa);
         [self setBGColor:[UIColor redColor] forField:card.asia onLabel:lblAsia];
@@ -54,8 +54,9 @@
         [self setBGColor:[UIColor redColor] forField:card.not_defcon2 onLabel:lblDefcon2];
     }
     
-    lblReminder.hidden = isFullVersion;
+    lblReminder.hidden = YES;
 }
+
 
 -(void) setBGColor:(UIColor*)color forField:(NSString*)field onLabel:(UILabel*) label {
     if (field) {

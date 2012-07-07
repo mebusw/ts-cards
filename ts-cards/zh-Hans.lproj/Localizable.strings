@@ -10,12 +10,14 @@
 "Add All Cards" = "添加所有卡牌";
 "My Collections" = "我的收集";
 "Unlock Full Version" = "解锁完整版";
+"Restore Purchased Feature" = "恢复已购买功能";
 "You've unlocked Full Version" = "你已经解锁了完整版";
-"Unlock Full Version for more functions" = "解锁完整版以获得更多功能";
-"You disabled to purchase in app store" = "你禁止了付费购买";
+"Unlock/Restore Full Version for more functions" = "解锁(或恢复)完整版以获得更多功能";
+"You disabled to purchase in app store" = "你禁止了应用内购买";
 "Alert" = "警告";
 "Failed to make transaction" = "无法进行交易";
 "Can't connect to iTunes" = "无法连接到iTunes";
 "Share to WeiBo" = "分享到新浪微博";
 "Text to social media" = "我正在使用 \"TS Card Lite\" iPhone版 http://itunes.apple.com/us/app/ts-cards-lite/id512565583?ls=1&mt=8  作为桌面游戏《冷战热斗》玩家，无论是面对面游戏，或是在线对战（如wargameroom）时，它都能帮助你回忆卡牌内容。试试吧，你会喜欢的！";
 "Shared To Friends" = "已分享给朋友";
+"Purchased Restored Successfully" = "成功恢复已购买项目";

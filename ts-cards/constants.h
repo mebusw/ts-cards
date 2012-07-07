@@ -20,7 +20,7 @@
 #define btnAppendAllCards 0
 #define btnShareToWeiBo 1
 #define btnClearAllCollections 2
-
+#define btnRestoreFullVersion 2
 
 
 #define kWBSDKDemoAppKey    @"4243791455"

@@ -101,7 +101,7 @@
         UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"You've unlocked Full Version") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:I18N(@"Add All Cards"), I18N(@"Share to WeiBo"), I18N(@"Remove All Collections"), nil];
         [actions showInView:self.view];
     } else {
-        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Unlock Full Version for more functions") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:I18N(@"Share to WeiBo"), nil];
+        UIActionSheet *actions = [[UIActionSheet alloc] initWithTitle:I18N(@"Unlock/Restore Full Version for more functions") delegate:self cancelButtonTitle:I18N(@"Cancel") destructiveButtonTitle:I18N(@"Unlock Full Version") otherButtonTitles:I18N(@"Share to WeiBo"), I18N(@"Restore Purchased Feature"), nil];
         [actions showInView:self.view];
     }
     
@@ -116,13 +116,19 @@
         return;
     }
     
-    if (!isFullVersionUnlocked && btnUnlockFullVersion == buttonIndex) {
-        if ([SKPaymentQueue canMakePayments]) {
-            [self requestProductData];
-        } else {
+    if (!isFullVersionUnlocked) {
+        if (![SKPaymentQueue canMakePayments]) {
             UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"You disabled to purchase in app store") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
             [alerView show];
+            return;
         }
+        
+        if (btnUnlockFullVersion == buttonIndex) {
+            [self requestProductData];
+        } else if (btnRestoreFullVersion == buttonIndex) {
+            [self restorePurchasedProducts];
+        }
+        
         return;
     }
     
@@ -143,6 +149,7 @@
 
 #pragma mark - In-App Purchase
 - (void) restorePurchasedProducts {
+    [_indicator startAnimating];
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
@@ -158,7 +165,6 @@
     NSArray *myProducts = response.products;
     
     DLog(@"product count=%d", [myProducts count]);
-    [_indicator stopAnimating];
     
     /*     DLog(@"invalid products: %@", response.invalidProductIdentifiers);
      
@@ -197,11 +203,12 @@
 }
 
 -(void) requestDidFinish:(SKRequest*)request {
-    DLog(@"");
+    DLog(@"%@", request);
+    [_indicator stopAnimating];
 }
 
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
-{
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+    [_indicator stopAnimating];
     for (SKPaymentTransaction *transaction in transactions)
     {
         DLog(@"%d", transaction.transactionState);
@@ -260,6 +267,8 @@
 
 -(void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue*)queue {
     DLog(@"");
+    UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:I18N(@"Alert") message:I18N(@"Purchased Restored Successfully") delegate:nil cancelButtonTitle:I18N(@"OK") otherButtonTitles:nil];    
+    [alerView show];
 }
 
 #pragma mark - Table View

@@ -10,8 +10,9 @@
 "Add All Cards" = "Add All Cards";
 "My Collections" = "My Collections";
 "Unlock Full Version" = "Unlock Full Version";
+"Restore Purchased Feature" = "Restore Purchased Feature";
 "You've unlocked Full Version" = "You've unlocked Full Version";
-"Unlock Full Version for more functions" = "Unlock Full Version for more functions";
+"Unlock/Restore Full Version for more functions" = "Unlock/Restore Full Version for more functions";
 "You disabled to purchase in app store" = "You disabled to purchase in app store";
 "Alert" = "Alert";
 "Failed to make transaction" = "Failed to make transaction";
@@ -19,3 +20,4 @@
 "Share to WeiBo" = "Share to WeiBo";
 "Text to social media" = "I'm using \"TS Card Lite\" for iPhone http://itunes.apple.com/us/app/ts-cards-lite/id512565583?ls=1&mt=8  It assists game player of the popular board game -- Twilight Struggle, either on a face-to-face game or an online game of e.g. wargameroom, to review the card details. Try it and you'll like it!";
 "Shared To Friends" = "Shared To Friends";
+"Purchased Restored Successfully" = "Purchased Restored Successfully";
