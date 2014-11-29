@@ -121,9 +121,6 @@
 		8F2B57591510EAF800BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8F2B575A1510EB0100BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/ts.sqlite; sourceTree = "<group>"; };
 		8F2B575B1510EB0A00BE3F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		8F2B575C1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/ts.sqlite"; sourceTree = "<absolute>"; };
-		8F2B575D1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
-		8F2B575E1510EBEA00BE3F48 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/mebusw/Desktop/ts-cards/ts-cards/zh-Hans.lproj/Localizable.strings"; sourceTree = "<absolute>"; };
 		8F2B57621510F0FE00BE3F48 /* TSCardDaoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCardDaoTest.h; sourceTree = "<group>"; };
 		8F2B57631510F0FE00BE3F48 /* TSCardDaoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCardDaoTest.m; sourceTree = "<group>"; };
 		8F3141411518E33C000EB574 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -196,7 +193,6 @@
 		8FD818DE15960B3000172335 /* WBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBUtil.h; sourceTree = "<group>"; };
 		8FD818DF15960B3000172335 /* WBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBUtil.m; sourceTree = "<group>"; };
 		8FD818E015960B3000172335 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		8FD818E115960B3000172335 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8FD8190115960B6E00172335 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8FD81903159610AD00172335 /* StrategiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategiesViewController.h; sourceTree = "<group>"; };
 		8FD81904159610AD00172335 /* StrategiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategiesViewController.m; sourceTree = "<group>"; };
@@ -516,7 +512,7 @@
 			name = "ts-cardsTests";
 			productName = "ts-cardsTests";
 			productReference = 8F2B57131510DF3000BE3F48 /* ts-cardsTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -533,7 +529,6 @@
 			knownRegions = (
 				en,
 				"zh-Hans",
-				"zh-Hant",
 			);
 			mainGroup = 8F2B56E41510DF3000BE3F48;
 			productRefGroup = 8F2B56F01510DF3000BE3F48 /* Products */;
@@ -661,7 +656,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				8F2B57591510EAF800BE3F48 /* en */,
-				8F2B575E1510EBEA00BE3F48 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -670,7 +664,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				8F2B575B1510EB0A00BE3F48 /* en */,
-				8F2B575D1510EBEA00BE3F48 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -679,7 +672,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				8F2B575A1510EB0100BE3F48 /* en */,
-				8F2B575C1510EBEA00BE3F48 /* zh-Hans */,
 			);
 			name = ts.sqlite;
 			sourceTree = "<group>";
@@ -689,7 +681,6 @@
 			children = (
 				8FD818AF15960B3000172335 /* en */,
 				8FD818E015960B3000172335 /* zh-Hans */,
-				8FD818E115960B3000172335 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -717,7 +708,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -735,7 +726,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;

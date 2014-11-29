@@ -111,10 +111,6 @@
     DLog(@"buttonIndex = %d", buttonIndex);
     bool isFullVersionUnlocked = [[NSUserDefaults standardUserDefaults] boolForKey:kFullVersionUnlocked];
     
-    if (btnShareToWeiBo == buttonIndex) {
-        [_weiBoEngine logIn];
-        return;
-    }
     
     if (!isFullVersionUnlocked) {
         if (![SKPaymentQueue canMakePayments]) {
@@ -144,6 +140,14 @@
             break;
     }
     return;
+}
+
+-(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (btnShareToWeiBo == buttonIndex) {
+        [_weiBoEngine logIn];
+        return;
+    }
+    
 }
 
 
@@ -442,7 +446,7 @@
 
 - (void)engineDidLogIn:(WBEngine *)engine {
     //[indicatorView stopAnimating];
-    DLog(@"login to weibo successfully.");
+    DLog(@"login to weibo successfully.  %@", engine.userID);
     
     /**send a sharing weibo*/
     [engine sendWeiBoWithText:I18N(@"Text to social media") image:[UIImage imageNamed:@"ICON@2x.png"]];
